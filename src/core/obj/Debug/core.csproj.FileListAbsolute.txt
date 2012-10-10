@@ -1,0 +1,4 @@
+C:\dev\yahoo_finance_data\src\core\bin\Debug\core.dll
+C:\dev\yahoo_finance_data\src\core\bin\Debug\core.pdb
+C:\dev\yahoo_finance_data\src\core\obj\Debug\core.dll
+C:\dev\yahoo_finance_data\src\core\obj\Debug\core.pdb

@@ -1,0 +1,8 @@
+C:\dev\yahoo_finance_data\src\ui\obj\x86\Debug\ui.csprojResolveAssemblyReference.cache
+C:\dev\yahoo_finance_data\src\ui\bin\Debug\ui.exe.config
+C:\dev\yahoo_finance_data\src\ui\bin\Debug\ui.exe
+C:\dev\yahoo_finance_data\src\ui\bin\Debug\ui.pdb
+C:\dev\yahoo_finance_data\src\ui\bin\Debug\core.dll
+C:\dev\yahoo_finance_data\src\ui\bin\Debug\core.pdb
+C:\dev\yahoo_finance_data\src\ui\obj\x86\Debug\ui.exe
+C:\dev\yahoo_finance_data\src\ui\obj\x86\Debug\ui.pdb
