@@ -16,3 +16,6 @@ C:\dev\yahoo_finance_data\src\tests\obj\Debug\tests.dll
 C:\dev\yahoo_finance_data\src\tests\obj\Debug\tests.pdb
 C:\dev\yahoo_finance_data\src\tests\bin\Debug\core.dll
 C:\dev\yahoo_finance_data\src\tests\bin\Debug\core.pdb
+C:\dev\stock_quote_api\src\tests\obj\Debug\tests.csprojResolveAssemblyReference.cache
+C:\dev\stock_quote_api\src\tests\obj\Debug\tests.dll
+C:\dev\stock_quote_api\src\tests\obj\Debug\tests.pdb

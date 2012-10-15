@@ -61,8 +61,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Quotes\QuoteSpecs.cs" />
-    <Compile Include="Quotes\YahooQuoteBuilderSpecs.cs" />
+    <Compile Include="Quotes\Request\QuoteSpecs.cs" />
+    <Compile Include="Quotes\Request\YahooQuoteBuilderSpecs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

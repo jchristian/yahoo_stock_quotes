@@ -43,12 +43,12 @@
     <Compile Include="Containers\ContainerFacadeResolver.cs" />
     <Compile Include="Containers\IFetchDependencies.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Quotes\IBuildAQuoteRequest.cs" />
-    <Compile Include="Quotes\IContainQuoteRequestData.cs" />
-    <Compile Include="Quotes\IListQuoteReturnParameters.cs" />
-    <Compile Include="Quotes\Request.cs" />
-    <Compile Include="Quotes\QuoteReturnParameter.cs" />
-    <Compile Include="Quotes\YahooQuoteRequest.cs" />
+    <Compile Include="Quotes\Request\IBuildAQuoteRequest.cs" />
+    <Compile Include="Quotes\Request\IContainQuoteRequestData.cs" />
+    <Compile Include="Quotes\Request\IListQuoteReturnParameters.cs" />
+    <Compile Include="Quotes\Request\Request.cs" />
+    <Compile Include="Quotes\Request\QuoteReturnParameter.cs" />
+    <Compile Include="Quotes\Request\YahooQuoteRequest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
