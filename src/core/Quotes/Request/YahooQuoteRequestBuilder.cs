@@ -3,25 +3,25 @@ using System.Collections.Generic;
 
 namespace core.Quotes.Request
 {
-    public class YahooQuoteRequestBuilder : IBuildAQuoteRequestRequest
+    public class YahooQuoteRequestBuilder : IBuildAQuoteRequest
     {
         IListQuoteReturnParameters parameter_list;
-        string ticker;
+        IEnumerable<string> tickers;
 
         public YahooQuoteRequestBuilder(IListQuoteReturnParameters parameter_list)
         {
             this.parameter_list = parameter_list;
         }
 
-        public IBuildAQuoteRequestRequest For(string ticker)
+        public IBuildAQuoteRequest For(params string[] tickers)
         {
-            this.ticker = ticker;
+            this.tickers = tickers;
             return this;
         }
 
         public IContainQuoteRequestData Return(Func<IListQuoteReturnParameters, IEnumerable<QuoteReturnParameter>> quote_return_parameters)
         {
-            return new YahooQuoteRequest(ticker, quote_return_parameters(parameter_list));
+            return new YahooQuoteRequest(tickers, quote_return_parameters(parameter_list));
         }
     }
 }

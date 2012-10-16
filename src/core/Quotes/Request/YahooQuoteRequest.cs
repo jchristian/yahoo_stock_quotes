@@ -4,12 +4,12 @@ namespace core.Quotes.Request
 {
     public class YahooQuoteRequest : IContainQuoteRequestData
     {
-        public string Ticker { get; set; }
+        public IEnumerable<string> Tickers { get; set; }
         public IEnumerable<QuoteReturnParameter> ReturnParameters { get; set; }
 
-        public YahooQuoteRequest(string ticker, IEnumerable<QuoteReturnParameter> quote_return_parameters)
+        public YahooQuoteRequest(IEnumerable<string> tickers, IEnumerable<QuoteReturnParameter> quote_return_parameters)
         {
-            Ticker = ticker;
+            Tickers = tickers;
             ReturnParameters = quote_return_parameters;
         }
     }

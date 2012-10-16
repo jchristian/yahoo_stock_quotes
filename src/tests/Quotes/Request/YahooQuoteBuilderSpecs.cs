@@ -7,7 +7,7 @@ namespace tests.Quotes.Request
 {
     public class YahooQuoteBuilderSpecs
     {
-        public abstract class concern : Observes<IBuildAQuoteRequestRequest,
+        public abstract class concern : Observes<IBuildAQuoteRequest,
                                             YahooQuoteRequestBuilder> { }
 
         [Subject(typeof(YahooQuoteBuilderSpecs))]
@@ -17,7 +17,7 @@ namespace tests.Quotes.Request
                 quote_request = sut.For(the_ticker).Return(x => null);
 
             It should_build_a_quote_with_the_correct_ticker = () =>
-                quote_request.Ticker.ShouldEqual(the_ticker);
+                quote_request.Tickers.ShouldContainOnly(the_ticker);
 
             static string the_ticker;
             static IContainQuoteRequestData quote_request;
@@ -35,7 +35,7 @@ namespace tests.Quotes.Request
             };
 
             Because of = () =>
-                quote_request = sut.Return(x => new[] { x.Symbol, x.LatestPrice });
+                quote_request = sut.For(null).Return(x => new[] { x.Symbol, x.LatestPrice });
 
             It should_build_a_quote_with_the_correct_return_parameters = () =>
                 quote_request.ReturnParameters.ShouldContainOnly(ticker_parameter, price_parameter);

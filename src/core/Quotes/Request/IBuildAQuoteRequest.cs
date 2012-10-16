@@ -3,13 +3,9 @@ using System.Collections.Generic;
 
 namespace core.Quotes.Request
 {
-    public interface IBuildAQuoteRequestRequest : IBuildAQuoteRequestParameters
+    public interface IBuildAQuoteRequest
     {
-        IBuildAQuoteRequestRequest For(string ticker);
-    }
-
-    public interface IBuildAQuoteRequestParameters
-    {
+        IBuildAQuoteRequest For(params string[] tickers);
         IContainQuoteRequestData Return(Func<IListQuoteReturnParameters, IEnumerable<QuoteReturnParameter>> quote_return_parameters);
     }
 }
