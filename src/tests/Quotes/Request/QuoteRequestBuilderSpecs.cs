@@ -1,11 +1,10 @@
 using System.Linq;
 using Machine.Specifications;
-using core;
-using core.Quotes.Request;
-using developwithpassion.specifications.extensions;
+using YSQ.core;
+using YSQ.core.Quotes.Request;
 using developwithpassion.specifications.moq;
 
-namespace tests.Quotes.Request
+namespace YSQ.tests.Quotes.Request
 {
     public class QuoteRequestBuilderSpecs
     {

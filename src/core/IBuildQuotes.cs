@@ -1,4 +1,4 @@
-﻿namespace core
+﻿namespace YSQ.core
 {
     public interface IBuildQuotes
     {

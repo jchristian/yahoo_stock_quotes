@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace core.Quotes.Request
+namespace YSQ.core.Quotes.Request
 {
     public class QuoteRequest
     {

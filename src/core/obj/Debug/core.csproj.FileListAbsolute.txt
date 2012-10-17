@@ -2,8 +2,7 @@ C:\dev\stock_quote_api\src\core\obj\Debug\core.dll
 C:\dev\stock_quote_api\src\core\obj\Debug\core.pdb
 C:\dev\stock_quote_api\src\core\bin\Debug\core.dll
 C:\dev\stock_quote_api\src\core\bin\Debug\core.pdb
-C:\dev\yahoo_finance_data\src\core\bin\Debug\core.dll
-C:\dev\yahoo_finance_data\src\core\bin\Debug\core.pdb
-C:\dev\yahoo_finance_data\src\core\obj\Debug\core.dll
-C:\dev\yahoo_finance_data\src\core\obj\Debug\core.pdb
-C:\dev\yahoo_finance_data\src\core\obj\Debug\core.csprojResolveAssemblyReference.cache
+C:\dev\yahoo_finance_data\src\core\bin\Debug\YSQ.core.dll
+C:\dev\yahoo_finance_data\src\core\bin\Debug\YSQ.core.pdb
+C:\dev\yahoo_finance_data\src\core\obj\Debug\YSQ.core.dll
+C:\dev\yahoo_finance_data\src\core\obj\Debug\YSQ.core.pdb

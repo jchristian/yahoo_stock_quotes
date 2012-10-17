@@ -17,9 +17,6 @@ C:\dev\stock_quote_api\src\tests\bin\Debug\developwithpassion.specifications.moq
 C:\dev\stock_quote_api\src\tests\bin\Debug\Moq.pdb
 C:\dev\stock_quote_api\src\tests\bin\Debug\Moq.xml
 C:\dev\yahoo_finance_data\src\tests\obj\Debug\tests.csprojResolveAssemblyReference.cache
-C:\dev\yahoo_finance_data\src\tests\bin\Debug\tests.dll
-C:\dev\yahoo_finance_data\src\tests\bin\Debug\tests.pdb
-C:\dev\yahoo_finance_data\src\tests\bin\Debug\core.dll
 C:\dev\yahoo_finance_data\src\tests\bin\Debug\developwithpassion.specifications.dll
 C:\dev\yahoo_finance_data\src\tests\bin\Debug\developwithpassion.specifications.moq.dll
 C:\dev\yahoo_finance_data\src\tests\bin\Debug\Machine.Fakes.Adapters.Moq.dll
@@ -27,10 +24,13 @@ C:\dev\yahoo_finance_data\src\tests\bin\Debug\Machine.Fakes.dll
 C:\dev\yahoo_finance_data\src\tests\bin\Debug\Machine.Specifications.Clr4.dll
 C:\dev\yahoo_finance_data\src\tests\bin\Debug\Machine.Specifications.dll
 C:\dev\yahoo_finance_data\src\tests\bin\Debug\Moq.dll
-C:\dev\yahoo_finance_data\src\tests\bin\Debug\core.pdb
 C:\dev\yahoo_finance_data\src\tests\bin\Debug\developwithpassion.specifications.pdb
 C:\dev\yahoo_finance_data\src\tests\bin\Debug\developwithpassion.specifications.moq.pdb
 C:\dev\yahoo_finance_data\src\tests\bin\Debug\Moq.pdb
 C:\dev\yahoo_finance_data\src\tests\bin\Debug\Moq.xml
-C:\dev\yahoo_finance_data\src\tests\obj\Debug\tests.dll
-C:\dev\yahoo_finance_data\src\tests\obj\Debug\tests.pdb
+C:\dev\yahoo_finance_data\src\tests\bin\Debug\YSQ.tests.dll
+C:\dev\yahoo_finance_data\src\tests\bin\Debug\YSQ.tests.pdb
+C:\dev\yahoo_finance_data\src\tests\bin\Debug\YSQ.core.dll
+C:\dev\yahoo_finance_data\src\tests\bin\Debug\YSQ.core.pdb
+C:\dev\yahoo_finance_data\src\tests\obj\Debug\YSQ.tests.dll
+C:\dev\yahoo_finance_data\src\tests\obj\Debug\YSQ.tests.pdb

@@ -7,8 +7,8 @@
     <ProjectGuid>{2A1CDB71-B856-4BBC-958E-25C1F7D72290}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>core</RootNamespace>
-    <AssemblyName>core</AssemblyName>
+    <RootNamespace>YSQ.core</RootNamespace>
+    <AssemblyName>YSQ.core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,25 +41,30 @@
   <ItemGroup>
     <Compile Include="IBuildQuotes.cs" />
     <Compile Include="IFindQuotes.cs" />
+    <Compile Include="InitializationFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuoteService.cs" />
-    <Compile Include="Quotes\RequestProcessing\CsvResponseParser.cs" />
-    <Compile Include="Quotes\RequestProcessing\IBuildAWebRequest.cs" />
-    <Compile Include="Quotes\RequestProcessing\IParseACsvResponse.cs" />
-    <Compile Include="Quotes\RequestProcessing\IProcessAWebRequest.cs" />
-    <Compile Include="Quotes\RequestProcessing\IProcessAQuoteResponse.cs" />
-    <Compile Include="Quotes\RequestProcessing\IProcessQuoteRequests.cs" />
-    <Compile Include="Quotes\RequestProcessing\QuoteResponse.cs" />
-    <Compile Include="Quotes\RequestProcessing\YahooQuoteRequestProcessor.cs" />
-    <Compile Include="Quotes\RequestProcessing\YahooQuoteResponseProcessor.cs" />
-    <Compile Include="Quotes\RequestProcessing\YahooReturnParameterMap.cs" />
-    <Compile Include="Quotes\RequestProcessing\YahooReturnParametersUrlParameterBuilder.cs" />
-    <Compile Include="Quotes\RequestProcessing\YahooTickersUrlParameterBuilder.cs" />
-    <Compile Include="Quotes\RequestProcessing\YahooWebRequestBuilder.cs" />
     <Compile Include="Quotes\Request\IBuildAQuoteRequest.cs" />
+    <Compile Include="Quotes\Request\Processing\IBuildAWebRequest.cs" />
+    <Compile Include="Quotes\Request\Processing\IParseACsvResponse.cs" />
+    <Compile Include="Quotes\Request\Processing\IProcessAWebRequest.cs" />
+    <Compile Include="Quotes\Request\Processing\IProcessQuoteRequests.cs" />
+    <Compile Include="Quotes\Request\Processing\WebRequestProcessor.cs" />
+    <Compile Include="Quotes\Request\Processing\YahooQuoteRequestProcessor.cs" />
+    <Compile Include="Quotes\Request\Processing\YahooReturnParameterMap.cs" />
+    <Compile Include="Quotes\Request\Processing\YahooReturnParametersUrlParameterBuilder.cs" />
+    <Compile Include="Quotes\Request\Processing\YahooTickersUrlParameterBuilder.cs" />
+    <Compile Include="Quotes\Request\Processing\YahooWebRequestBuilder.cs" />
     <Compile Include="Quotes\Request\QuoteRequest.cs" />
     <Compile Include="Quotes\Request\QuoteRequestBuilder.cs" />
     <Compile Include="QuoteReturnParameter.cs" />
+    <Compile Include="Quotes\Response\Processing\CsvResponseParser.cs" />
+    <Compile Include="Quotes\Response\Processing\IParseAYahooQuote.cs" />
+    <Compile Include="Quotes\Response\Processing\IProcessAQuoteResponse.cs" />
+    <Compile Include="Quotes\Response\Processing\YahooQuoteParser.cs" />
+    <Compile Include="Quotes\Response\Processing\YahooQuoteResponseProcessor.cs" />
+    <Compile Include="Quotes\Response\QuoteResponse.cs" />
+    <Compile Include="Quotes\YahooQuote.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

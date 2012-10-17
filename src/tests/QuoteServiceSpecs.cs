@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using Machine.Specifications;
-using core;
-using core.Quotes.Request;
-using core.Quotes.RequestProcessing;
+using YSQ.core;
+using YSQ.core.Quotes.Request;
+using YSQ.core.Quotes.Request.Processing;
 using developwithpassion.specifications.extensions;
 using developwithpassion.specifications.moq;
 
-namespace tests
+namespace YSQ.tests
 {
     public class QuoteServiceSpecs
     {

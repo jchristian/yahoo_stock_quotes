@@ -7,8 +7,8 @@
     <ProjectGuid>{98427D0D-95F1-47C4-BA45-1D743654202E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>tests</RootNamespace>
-    <AssemblyName>tests</AssemblyName>
+    <RootNamespace>YSQ.tests</RootNamespace>
+    <AssemblyName>YSQ.tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -62,13 +62,13 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuoteServiceSpecs.cs" />
-    <Compile Include="Quotes\RequestProcessing\YahooQuoteProcessorSpecs.cs" />
-    <Compile Include="Quotes\RequestProcessing\YahooQuoteRequestProcessorSpecs.cs" />
-    <Compile Include="Quotes\RequestProcessing\YahooQuoteResponseProcessorSpecs.cs" />
-    <Compile Include="Quotes\RequestProcessing\YahooReturnParametersUrlParameterBuilderSpecs.cs" />
-    <Compile Include="Quotes\RequestProcessing\YahooTickersUrlParameterBuilderSpecs.cs" />
-    <Compile Include="Quotes\RequestProcessing\YahooWebRequestBuilderSpecs.cs" />
+    <Compile Include="Quotes\Request\Processing\YahooQuoteRequestProcessorSpecs.cs" />
+    <Compile Include="Quotes\Request\Processing\YahooReturnParametersUrlParameterBuilderSpecs.cs" />
+    <Compile Include="Quotes\Request\Processing\YahooTickersUrlParameterBuilderSpecs.cs" />
+    <Compile Include="Quotes\Request\Processing\YahooWebRequestBuilderSpecs.cs" />
     <Compile Include="Quotes\Request\QuoteRequestBuilderSpecs.cs" />
+    <Compile Include="Quotes\Response\Processing\YahooQuoteProcessorSpecs.cs" />
+    <Compile Include="Quotes\Response\Processing\YahooQuoteResponseProcessorSpecs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace core
+namespace YSQ.core
 {
     public interface IFindQuotes
     {
