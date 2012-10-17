@@ -1,0 +1,5 @@
+C:\dev\yahoo_finance_data\src\console\bin\Debug\console.exe
+C:\dev\yahoo_finance_data\src\console\bin\Debug\console.pdb
+C:\dev\yahoo_finance_data\src\console\obj\x86\Debug\console.csprojResolveAssemblyReference.cache
+C:\dev\yahoo_finance_data\src\console\obj\x86\Debug\console.exe
+C:\dev\yahoo_finance_data\src\console\obj\x86\Debug\console.pdb
