@@ -6,7 +6,7 @@ namespace core.Quotes.RequestProcessing
 {
     public class YahooTickersUrlParameterBuilder
     {
-        public virtual string Build(IContainQuoteRequestData quote_request)
+        public virtual string Build(QuoteRequest quote_request)
         {
             if (!quote_request.Tickers.Any())
                 return "";

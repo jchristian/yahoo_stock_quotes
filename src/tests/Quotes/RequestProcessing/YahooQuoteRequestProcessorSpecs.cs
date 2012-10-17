@@ -19,18 +19,19 @@ namespace tests.Quotes.RequestProcessing
         {
             Establish c = () =>
             {
-                quote_request = fake.an<IContainQuoteRequestData>();
+                quote_request = new QuoteRequest();
                 processed_web_response = Enumerable.Empty<dynamic>();
 
                 var web_request_builder = depends.on<IBuildAWebRequest>();
                 var web_request_processor = depends.on<IProcessAWebRequest>();
-                var web_response_processor = depends.on<IProcessAWebResponse>();
+                var web_response_processor = depends.on<IProcessAQuoteResponse>();
 
                 var web_request = fake.an<WebRequest>();
                 web_request_builder.setup(x => x.Build(quote_request)).Return(web_request);
                 var web_response = fake.an<WebResponse>();
                 web_request_processor.setup(x => x.Process(web_request)).Return(web_response);
-                web_response_processor.setup(x => x.Return<IEnumerable<dynamic>>(web_response)).Return(processed_web_response);
+                web_response_processor.setup(x => x.Return(Moq.It.Is<QuoteResponse>(y => y.QuoteRequest == quote_request && y.WebResponse == web_response)))
+                                      .Return(processed_web_response);
             };
 
             Because of = () =>
@@ -41,7 +42,7 @@ namespace tests.Quotes.RequestProcessing
 
             static IEnumerable<dynamic> processed_quote_request;
             static IEnumerable<dynamic> processed_web_response;
-            static IContainQuoteRequestData quote_request;
+            static QuoteRequest quote_request;
         }
     }
 }

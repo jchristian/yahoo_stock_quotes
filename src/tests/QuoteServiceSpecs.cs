@@ -39,7 +39,7 @@ namespace tests
         {
             Establish c = () =>
             {
-                var quote_request = fake.an<IContainQuoteRequestData>();
+                var quote_request = new QuoteRequest();
                 quote_return_parameters = new[] { QuoteReturnParameter.Symbol };
                 quotes_from_processor = new List<dynamic>();
 

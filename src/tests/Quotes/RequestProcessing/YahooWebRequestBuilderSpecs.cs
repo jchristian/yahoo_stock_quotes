@@ -23,9 +23,7 @@ namespace tests.Quotes.RequestProcessing
                 tickers_url_parameter = "s=GOOG+MSFT";
                 return_parameters_url_parameter = "f=snl1d1t1";
 
-                quote_request = fake.an<IContainQuoteRequestData>();
-                quote_request.setup(x => x.Tickers).Return(new[] { "GOOG", "MSFT" });
-                quote_request.setup(x => x.ReturnParameters).Return(Enumerable.Empty<QuoteReturnParameter>());
+                quote_request = new QuoteRequest { Tickers = new[] { "GOOG", "MSFT" }, ReturnParameters = Enumerable.Empty<QuoteReturnParameter>() };
 
                 var tickers_builder = depends.on<YahooTickersUrlParameterBuilder>();
                 var return_parameters_builder = depends.on<YahooReturnParametersUrlParameterBuilder>();
@@ -41,7 +39,7 @@ namespace tests.Quotes.RequestProcessing
                 built_web_request.RequestUri.AbsoluteUri.ShouldEqual(base_url + "?" + tickers_url_parameter + "&" + return_parameters_url_parameter);
 
             static WebRequest built_web_request;
-            static IContainQuoteRequestData quote_request;
+            static QuoteRequest quote_request;
             static string base_url;
             static string tickers_url_parameter;
             static string return_parameters_url_parameter;

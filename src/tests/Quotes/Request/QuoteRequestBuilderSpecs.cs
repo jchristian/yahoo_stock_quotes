@@ -22,7 +22,7 @@ namespace tests.Quotes.Request
                 quote_request.Tickers.ShouldContainOnly(the_ticker);
 
             static string the_ticker;
-            static IContainQuoteRequestData quote_request;
+            static QuoteRequest quote_request;
         }
 
         [Subject(typeof(QuoteRequestBuilder))]
@@ -34,7 +34,7 @@ namespace tests.Quotes.Request
             It should_build_a_quote_with_the_correct_return_parameters = () =>
                 quote_request.ReturnParameters.ShouldContainOnly(QuoteReturnParameter.Symbol, QuoteReturnParameter.LatestPrice);
 
-            static IContainQuoteRequestData quote_request;
+            static QuoteRequest quote_request;
         }
     }
 }

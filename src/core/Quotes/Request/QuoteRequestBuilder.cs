@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace core.Quotes.Request
@@ -13,7 +12,7 @@ namespace core.Quotes.Request
             return this;
         }
 
-        public IContainQuoteRequestData Return(IEnumerable<QuoteReturnParameter> quote_return_parameters)
+        public QuoteRequest Return(IEnumerable<QuoteReturnParameter> quote_return_parameters)
         {
             return new QuoteRequest(tickers, quote_return_parameters);
         }

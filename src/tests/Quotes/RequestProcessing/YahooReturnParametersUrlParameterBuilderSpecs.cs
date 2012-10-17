@@ -20,8 +20,7 @@ namespace tests.Quotes.RequestProcessing
                 var second_quote_return_parameter = QuoteReturnParameter.Name;
                 var third_quote_return_parameter = QuoteReturnParameter.LatestPrice;
 
-                quote_request = fake.an<IContainQuoteRequestData>();
-                quote_request.setup(x => x.ReturnParameters).Return(new[] { first_quote_return_parameter, second_quote_return_parameter, third_quote_return_parameter });
+                quote_request = new QuoteRequest { ReturnParameters = new[] { first_quote_return_parameter, second_quote_return_parameter, third_quote_return_parameter } };
 
                 var return_paramter_map = depends.on<YahooReturnParameterMap>();
                 
@@ -40,7 +39,7 @@ namespace tests.Quotes.RequestProcessing
             static string first_url_return_parameter;
             static string second_url_return_parameter;
             static string third_url_return_parameter;
-            static IContainQuoteRequestData quote_request;
+            static QuoteRequest quote_request;
         }
     }
 }

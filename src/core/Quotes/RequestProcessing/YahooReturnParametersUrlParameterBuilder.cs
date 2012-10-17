@@ -14,7 +14,7 @@ namespace core.Quotes.RequestProcessing
             this.return_parameter_map = return_parameter_map;
         }
 
-        public virtual string Build(IContainQuoteRequestData quote_request)
+        public virtual string Build(QuoteRequest quote_request)
         {
             if (!quote_request.ReturnParameters.Any())
                 return "";

@@ -16,7 +16,7 @@ namespace core.Quotes.RequestProcessing
             this.return_parameters_builder = return_parameters_builder;
         }
 
-        public WebRequest Build(IContainQuoteRequestData quote_request)
+        public WebRequest Build(QuoteRequest quote_request)
         {
             var tickers_url_parameter = tickers_builder.Build(quote_request);
             var return_parameters_url_parameter = return_parameters_builder.Build(quote_request);

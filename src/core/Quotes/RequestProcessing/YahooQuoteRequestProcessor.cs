@@ -7,21 +7,21 @@ namespace core.Quotes.RequestProcessing
     {
         IBuildAWebRequest web_request_builder;
         IProcessAWebRequest web_request_processor;
-        IProcessAWebResponse response_processor;
+        IProcessAQuoteResponse response_processor;
 
-        public YahooQuoteRequestProcessor(IBuildAWebRequest web_request_builder, IProcessAWebRequest web_request_processor, IProcessAWebResponse response_processor)
+        public YahooQuoteRequestProcessor(IBuildAWebRequest web_request_builder, IProcessAWebRequest web_request_processor, IProcessAQuoteResponse response_processor)
         {
             this.web_request_builder = web_request_builder;
             this.web_request_processor = web_request_processor;
             this.response_processor = response_processor;
         }
 
-        public IEnumerable<dynamic> Process(IContainQuoteRequestData quote_request)
+        public IEnumerable<dynamic> Process(QuoteRequest quote_request)
         {
             var web_request = web_request_builder.Build(quote_request);
             var web_response = web_request_processor.Process(web_request);
      
-            return response_processor.Return<IEnumerable<dynamic>>(web_response);
+            return response_processor.Return(new QuoteResponse(web_response, quote_request));
         }
     }
 }

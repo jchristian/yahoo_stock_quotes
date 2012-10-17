@@ -5,6 +5,6 @@ namespace core.Quotes.RequestProcessing
 {
     public interface IProcessQuoteRequests
     {
-        IEnumerable<dynamic> Process(IContainQuoteRequestData quote_request);
+        IEnumerable<dynamic> Process(QuoteRequest quote_request);
     }
 }

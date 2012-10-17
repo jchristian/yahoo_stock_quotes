@@ -5,6 +5,6 @@ namespace core.Quotes.RequestProcessing
 {
     public interface IBuildAWebRequest
     {
-        WebRequest Build(IContainQuoteRequestData quote_request);
+        WebRequest Build(QuoteRequest quote_request);
     }
 }

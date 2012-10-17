@@ -62,7 +62,9 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuoteServiceSpecs.cs" />
+    <Compile Include="Quotes\RequestProcessing\YahooQuoteProcessorSpecs.cs" />
     <Compile Include="Quotes\RequestProcessing\YahooQuoteRequestProcessorSpecs.cs" />
+    <Compile Include="Quotes\RequestProcessing\YahooQuoteResponseProcessorSpecs.cs" />
     <Compile Include="Quotes\RequestProcessing\YahooReturnParametersUrlParameterBuilderSpecs.cs" />
     <Compile Include="Quotes\RequestProcessing\YahooTickersUrlParameterBuilderSpecs.cs" />
     <Compile Include="Quotes\RequestProcessing\YahooWebRequestBuilderSpecs.cs" />
