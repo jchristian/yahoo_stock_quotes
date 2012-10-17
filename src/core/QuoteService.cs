@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using core.Quotes.Request;
+using core.Quotes.RequestProcessing;
 
 namespace core
 {
@@ -21,15 +22,10 @@ namespace core
             return this;
         }
 
-        public IEnumerable<dynamic> Return(Func<IListQuoteReturnParameters, IEnumerable<QuoteReturnParameter>> return_parameters)
+        public IEnumerable<dynamic> Return(params QuoteReturnParameter[] return_parameters)
         {
             var request = quote_request_builder.Return(return_parameters);
             return quote_request_processor.Process(request);
         }
-    }
-
-    public interface IProcessQuoteRequests
-    {
-        IEnumerable<dynamic> Process(IContainQuoteRequestData request);
     }
 }

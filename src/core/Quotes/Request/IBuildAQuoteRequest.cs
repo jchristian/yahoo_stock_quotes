@@ -6,6 +6,6 @@ namespace core.Quotes.Request
     public interface IBuildAQuoteRequest
     {
         IBuildAQuoteRequest For(params string[] tickers);
-        IContainQuoteRequestData Return(Func<IListQuoteReturnParameters, IEnumerable<QuoteReturnParameter>> quote_return_parameters);
+        IContainQuoteRequestData Return(IEnumerable<core.QuoteReturnParameter> quote_return_parameters);
     }
 }

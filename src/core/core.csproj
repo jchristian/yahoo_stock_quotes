@@ -39,19 +39,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Containers\Container.cs" />
-    <Compile Include="Containers\ContainerFacadeResolver.cs" />
-    <Compile Include="Containers\IFetchDependencies.cs" />
     <Compile Include="IBuildQuotes.cs" />
     <Compile Include="IFindQuotes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuoteService.cs" />
+    <Compile Include="Quotes\RequestProcessing\IBuildAWebRequest.cs" />
+    <Compile Include="Quotes\RequestProcessing\IProcessAWebRequest.cs" />
+    <Compile Include="Quotes\RequestProcessing\IProcessAWebResponse.cs" />
+    <Compile Include="Quotes\RequestProcessing\IProcessQuoteRequests.cs" />
+    <Compile Include="Quotes\RequestProcessing\YahooQuoteRequestProcessor.cs" />
+    <Compile Include="Quotes\RequestProcessing\YahooReturnParameterMap.cs" />
+    <Compile Include="Quotes\RequestProcessing\YahooReturnParametersUrlParameterBuilder.cs" />
+    <Compile Include="Quotes\RequestProcessing\YahooTickersUrlParameterBuilder.cs" />
+    <Compile Include="Quotes\RequestProcessing\YahooWebRequestBuilder.cs" />
     <Compile Include="Quotes\Request\IBuildAQuoteRequest.cs" />
     <Compile Include="Quotes\Request\IContainQuoteRequestData.cs" />
-    <Compile Include="Quotes\Request\IListQuoteReturnParameters.cs" />
-    <Compile Include="Quotes\Request\QuoteReturnParameter.cs" />
-    <Compile Include="Quotes\Request\YahooQuoteRequest.cs" />
-    <Compile Include="Quotes\Request\YahooQuoteRequestBuilder.cs" />
+    <Compile Include="Quotes\Request\QuoteRequest.cs" />
+    <Compile Include="Quotes\Request\QuoteRequestBuilder.cs" />
+    <Compile Include="QuoteReturnParameter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -10,7 +10,7 @@ namespace ui
         static void Main(string[] args)
         {
             var quote_service = new QuoteService(null, null);
-            var quotes = quote_service.Quote("MSFT", "GOOG").Return(x => new[] { x.Symbol, x.Name, x.LatestPrice, x.LatestTime });
+            var quotes = quote_service.Quote("MSFT", "GOOG").Return(QuoteReturnParameter.Symbol, QuoteReturnParameter.Name, QuoteReturnParameter.LatestPrice, QuoteReturnParameter.LatestTime);
 
             foreach (var quote in quotes)
             {

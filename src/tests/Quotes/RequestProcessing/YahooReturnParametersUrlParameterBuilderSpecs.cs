@@ -1,0 +1,46 @@
+﻿using Machine.Specifications;
+using core;
+using core.Quotes.Request;
+using core.Quotes.RequestProcessing;
+using developwithpassion.specifications.extensions;
+using developwithpassion.specifications.moq;
+
+namespace tests.Quotes.RequestProcessing
+{
+    public class YahooReturnParametersUrlParameterBuilderSpecs
+    {
+        public abstract class concern : Observes<YahooReturnParametersUrlParameterBuilder> {}
+
+        [Subject(typeof(YahooReturnParametersUrlParameterBuilder))]
+        public class when_building_the_return_parameters_url_parameter : concern
+        {
+            Establish c = () =>
+            {
+                var first_quote_return_parameter = QuoteReturnParameter.Symbol;
+                var second_quote_return_parameter = QuoteReturnParameter.Name;
+                var third_quote_return_parameter = QuoteReturnParameter.LatestPrice;
+
+                quote_request = fake.an<IContainQuoteRequestData>();
+                quote_request.setup(x => x.ReturnParameters).Return(new[] { first_quote_return_parameter, second_quote_return_parameter, third_quote_return_parameter });
+
+                var return_paramter_map = depends.on<YahooReturnParameterMap>();
+                
+                return_paramter_map.setup(x => x.Map(first_quote_return_parameter)).Return(first_url_return_parameter);
+                return_paramter_map.setup(x => x.Map(second_quote_return_parameter)).Return(second_url_return_parameter);
+                return_paramter_map.setup(x => x.Map(third_quote_return_parameter)).Return(third_url_return_parameter);
+            };
+
+            Because of = () =>
+                return_parameters_url_parameter = sut.Build(quote_request);
+
+            It should_return_the_concatenated_return_parameters = () =>
+                return_parameters_url_parameter.ShouldEqual("f=" + first_url_return_parameter + second_url_return_parameter + third_url_return_parameter);
+            
+            static string return_parameters_url_parameter;
+            static string first_url_return_parameter;
+            static string second_url_return_parameter;
+            static string third_url_return_parameter;
+            static IContainQuoteRequestData quote_request;
+        }
+    }
+}

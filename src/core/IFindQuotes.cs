@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using core.Quotes.Request;
+﻿using System.Collections.Generic;
 
 namespace core
 {
     public interface IFindQuotes
     {
-        IEnumerable<dynamic> Return(Func<IListQuoteReturnParameters, IEnumerable<QuoteReturnParameter>> return_parameters);
+        IEnumerable<dynamic> Return(params QuoteReturnParameter[] return_parameters);
     }
 }

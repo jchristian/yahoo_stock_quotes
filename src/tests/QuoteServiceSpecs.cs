@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Machine.Specifications;
 using core;
 using core.Quotes.Request;
+using core.Quotes.RequestProcessing;
 using developwithpassion.specifications.extensions;
 using developwithpassion.specifications.moq;
 
@@ -40,7 +40,7 @@ namespace tests
             Establish c = () =>
             {
                 var quote_request = fake.an<IContainQuoteRequestData>();
-                quote_return_parameters = x => new[] { x.Symbol };
+                quote_return_parameters = new[] { QuoteReturnParameter.Symbol };
                 quotes_from_processor = new List<dynamic>();
 
                 var quote_request_builder = depends.on<IBuildAQuoteRequest>();
@@ -56,7 +56,7 @@ namespace tests
             It should_return_the_quotes_processed_using_the_request = () =>
                 returned_quotes.ShouldEqual(quotes_from_processor);
 
-            static Func<IListQuoteReturnParameters, IEnumerable<QuoteReturnParameter>> quote_return_parameters;
+            static QuoteReturnParameter[] quote_return_parameters;
             static IEnumerable<dynamic> returned_quotes;
             static IEnumerable<dynamic> quotes_from_processor;
         }
