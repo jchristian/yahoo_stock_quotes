@@ -28,10 +28,10 @@ namespace YSQ.tests.Quotes.Request
         public class when_building_the_data_to_return : concern
         {
             Because of = () =>
-                quote_request = sut.For(null).Return(new[] { QuoteReturnParameter.Symbol, QuoteReturnParameter.LatestPrice });
+                quote_request = sut.For(null).Return(new[] { QuoteReturnParameter.Symbol, QuoteReturnParameter.LatestTradePrice });
 
             It should_build_a_quote_with_the_correct_return_parameters = () =>
-                quote_request.ReturnParameters.ShouldContainOnly(QuoteReturnParameter.Symbol, QuoteReturnParameter.LatestPrice);
+                quote_request.ReturnParameters.ShouldContainOnly(QuoteReturnParameter.Symbol, QuoteReturnParameter.LatestTradePrice);
 
             static QuoteRequest quote_request;
         }

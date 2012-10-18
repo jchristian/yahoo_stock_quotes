@@ -16,9 +16,22 @@ namespace YSQ.core.Quotes
 
         public override bool TryGetMember(GetMemberBinder binder, out object result)
         {
-            if(return_parameter_dictionary.ContainsKey(binder.Name))
+            if (return_parameter_dictionary.ContainsKey(binder.Name))
             {
                 result = return_parameter_dictionary[binder.Name];
+                return true;
+            }
+
+            result = null;
+            return false;
+        }
+
+        public override bool TryGetIndex(GetIndexBinder binder, object[] indexes, out object result)
+        {
+            var index = indexes.First() as String;
+            if (return_parameter_dictionary.ContainsKey(index))
+            {
+                result = return_parameter_dictionary[index];
                 return true;
             }
 

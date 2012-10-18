@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using Machine.Specifications;
 using YSQ.core;
 using YSQ.core.Quotes.Request;
 using YSQ.core.Quotes.Request.Processing;
 using developwithpassion.specifications.extensions;
 using developwithpassion.specifications.moq;
+using System.Linq;
 
 namespace YSQ.tests
 {
@@ -45,7 +48,7 @@ namespace YSQ.tests
 
                 var quote_request_builder = depends.on<IBuildAQuoteRequest>();
                 var quote_request_processor = depends.on<IProcessQuoteRequests>();
-                
+
                 quote_request_builder.setup(x => x.Return(quote_return_parameters)).Return(quote_request);
                 quote_request_processor.setup(x => x.Process(quote_request)).Return(quotes_from_processor);
             };
@@ -59,6 +62,31 @@ namespace YSQ.tests
             static QuoteReturnParameter[] quote_return_parameters;
             static IEnumerable<dynamic> returned_quotes;
             static IEnumerable<dynamic> quotes_from_processor;
+        }
+
+        [Subject(typeof(QuoteService))]
+        public class when_getting_all_the_data : concern
+        {
+            Establish c = () =>
+            {
+                sut_factory.create_using(() => new QuoteService());
+            };
+
+            Because of = () =>
+                returned_quotes = sut.Quote("MSFT", "GOOG", "^SP500FTR").Return(Enum.GetValues(typeof(QuoteReturnParameter)).Cast<QuoteReturnParameter>().ToArray());
+
+            It should_return_all_the_data = () =>
+            {
+                foreach (var quote in returned_quotes)
+                {
+                    foreach (var return_parameter in Enum.GetValues(typeof(QuoteReturnParameter)).Cast<QuoteReturnParameter>())
+                    {
+                        Debug.WriteLine("{0} - {1} - {2}", (string)quote.Name, return_parameter.ToString(), (string)quote[return_parameter.ToString()]);
+                    }
+                }
+            };
+
+            static IEnumerable<dynamic> returned_quotes;
         }
     }
 }

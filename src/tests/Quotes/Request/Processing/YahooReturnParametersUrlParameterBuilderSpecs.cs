@@ -18,7 +18,7 @@ namespace YSQ.tests.Quotes.Request.Processing
             {
                 var first_quote_return_parameter = QuoteReturnParameter.Symbol;
                 var second_quote_return_parameter = QuoteReturnParameter.Name;
-                var third_quote_return_parameter = QuoteReturnParameter.LatestPrice;
+                var third_quote_return_parameter = QuoteReturnParameter.LatestTradePrice;
 
                 quote_request = new QuoteRequest { ReturnParameters = new[] { first_quote_return_parameter, second_quote_return_parameter, third_quote_return_parameter } };
 
