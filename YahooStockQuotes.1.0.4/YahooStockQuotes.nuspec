@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>YahooStockQuotes</id>
+    <version>1.0.4</version>
+    <title>Yahoo Stock Quotes</title>
+    <authors>Jonathan Christian</authors>
+    <owners>Jonathan Christian</owners>
+    <projectUrl>https://github.com/jchristian/yahoo_stock_quotes</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Easily get stock quotes and historical prices from the Yahoo Finance API</description>
+    <copyright>Copyright 2014</copyright>
+    <tags>finance stock quote</tags>
+    <dependencies>
+      <dependency id="LumenWorks.Framework.IO" version="3.8.0" />
+    </dependencies>
+  </metadata>
+</package>

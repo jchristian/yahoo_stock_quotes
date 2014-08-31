@@ -1,0 +1,10 @@
+C:\dev\yahoo_stock_quotes\src\console_runner\bin\Release\YSQ.console_runner.exe.config
+C:\dev\yahoo_stock_quotes\src\console_runner\bin\Release\YSQ.console_runner.exe
+C:\dev\yahoo_stock_quotes\src\console_runner\bin\Release\YSQ.console_runner.pdb
+C:\dev\yahoo_stock_quotes\src\console_runner\bin\Release\LumenWorks.Framework.IO.dll
+C:\dev\yahoo_stock_quotes\src\console_runner\bin\Release\YSQ.core.dll
+C:\dev\yahoo_stock_quotes\src\console_runner\bin\Release\YSQ.core.pdb
+C:\dev\yahoo_stock_quotes\src\console_runner\bin\Release\LumenWorks.Framework.IO.xml
+C:\dev\yahoo_stock_quotes\src\console_runner\obj\x86\Release\console_runner.csprojResolveAssemblyReference.cache
+C:\dev\yahoo_stock_quotes\src\console_runner\obj\x86\Release\YSQ.console_runner.exe
+C:\dev\yahoo_stock_quotes\src\console_runner\obj\x86\Release\YSQ.console_runner.pdb
