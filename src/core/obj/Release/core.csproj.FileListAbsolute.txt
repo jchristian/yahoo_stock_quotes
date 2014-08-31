@@ -4,3 +4,4 @@ C:\dev\yahoo_stock_quotes\src\core\bin\Release\LumenWorks.Framework.IO.dll
 C:\dev\yahoo_stock_quotes\src\core\bin\Release\LumenWorks.Framework.IO.xml
 C:\dev\yahoo_stock_quotes\src\core\obj\Release\YSQ.core.dll
 C:\dev\yahoo_stock_quotes\src\core\obj\Release\YSQ.core.pdb
+C:\dev\yahoo_stock_quotes\src\core\obj\Release\core.csprojResolveAssemblyReference.cache

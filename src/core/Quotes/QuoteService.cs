@@ -10,7 +10,7 @@ namespace YSQ.core.Quotes
         IProcessQuoteRequests quote_request_processor;
 
         public QuoteService() : this(InitializationFactory.CreateAQuoteRequestBuilder(), InitializationFactory.CreateAQuoteRequestProcessor()) { }
-        public QuoteService(IBuildAQuoteRequest quote_request_builder, IProcessQuoteRequests quote_request_processor)
+        QuoteService(IBuildAQuoteRequest quote_request_builder, IProcessQuoteRequests quote_request_processor)
         {
             this.quote_request_builder = quote_request_builder;
             this.quote_request_processor = quote_request_processor;

@@ -11,7 +11,7 @@ namespace YSQ.core.Historical
         HistoricalPriceResponseProcessor response_processor;
 
         public HistoricalPriceService() : this(InitializationFactory.CreateAHistoricPriceRequestProcessor(), InitializationFactory.CreateAHistoricalPriceResponseProcessor()) { }
-        public HistoricalPriceService(HistoricPriceRequestProcessor request_processor, HistoricalPriceResponseProcessor response_processor)
+        HistoricalPriceService(HistoricPriceRequestProcessor request_processor, HistoricalPriceResponseProcessor response_processor)
         {
             this.request_processor = request_processor;
             this.response_processor = response_processor;
