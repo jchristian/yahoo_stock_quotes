@@ -18,3 +18,19 @@ foreach (var quote in quotes)
     Console.WriteLine("{0} - {1} - {2} - {3}", quote.Symbol, quote.Name, quote.LatestTradePrice, quote.LatestTradeTime);
 }
 ```
+
+Get historical prices easily by just
+
+```
+//Create the historical price service
+var historical_price_service = new HistoricalPriceService();
+
+//Get the historical prices
+var historical_prices = historical_price_service.Get("VTIAX", new DateTime(2014, 1, 1), DateTime.UtcNow, Period.Daily);
+
+//Use the prices!
+foreach (var price in historical_prices)
+{
+    Console.WriteLine("{0} - {1} ", price.Date.ToString("MMM dd,yyyy"), price.Price);
+}
+```
