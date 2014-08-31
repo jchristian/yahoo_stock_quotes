@@ -1,3 +1,4 @@
+using System.Collections;
 using Machine.Specifications;
 using YSQ.core.Quotes.Request;
 using YSQ.core.Quotes.Request.Processing;
@@ -17,12 +18,10 @@ namespace YSQ.tests.Quotes.Request.Processing
                 first_ticker = "GOOG";
                 second_ticker = "MSFT";
                 third_ticker = "^SP500FTR";
-
-                quote_request = new QuoteRequest { Tickers = new[] { first_ticker, second_ticker, third_ticker } };
             };
 
             Because of = () =>
-                url_parameter = sut.Build(quote_request);
+                url_parameter = sut.Build(new[] { first_ticker, second_ticker, third_ticker });
 
             It should_return_the_tickers_separated_by_plus_signs = () =>
                 url_parameter.ShouldEqual("s=" + first_ticker + "+" + second_ticker + "+" + third_ticker);
@@ -31,7 +30,6 @@ namespace YSQ.tests.Quotes.Request.Processing
             static string first_ticker;
             static string second_ticker;
             static string third_ticker;
-            static QuoteRequest quote_request;
         }
     }
 }

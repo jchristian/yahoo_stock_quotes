@@ -1,15 +1,22 @@
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace YSQ.core.Quotes.Request.Processing
 {
     public class YahooTickersUrlParameterBuilder
     {
-        public virtual string Build(QuoteRequest quote_request)
+        public virtual string Build(params string[] tickers)
         {
-            if (!quote_request.Tickers.Any())
+            return Build((IEnumerable<string>)tickers);
+        }
+
+        public virtual string Build(IEnumerable<string> tickers)
+        {
+            if (!tickers.Any())
                 return "";
 
-            return "s=" + quote_request.Tickers.Skip(1).Aggregate(quote_request.Tickers.First(), (url_parameter, next_ticker) => url_parameter + "+" + next_ticker);
+            return "s=" + tickers.Skip(1).Aggregate(tickers.First(), (url_parameter, next_ticker) => url_parameter + "+" + next_ticker);
         }
     }
 }

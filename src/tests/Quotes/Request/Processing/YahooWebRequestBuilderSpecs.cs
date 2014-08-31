@@ -2,6 +2,7 @@ using System.Linq;
 using System.Net;
 using Machine.Specifications;
 using YSQ.core;
+using YSQ.core.Quotes;
 using YSQ.core.Quotes.Request;
 using YSQ.core.Quotes.Request.Processing;
 using developwithpassion.specifications.extensions;
@@ -11,15 +12,15 @@ namespace YSQ.tests.Quotes.Request.Processing
 {
     public class YahooWebRequestBuilderSpecs
     {
-        public abstract class concern : Observes<IBuildAWebRequest,
-                                            YahooWebRequestBuilder> {}
+        public abstract class concern : Observes<IBuildAQuoteWebRequest,
+                                            YahooQuoteWebRequestBuilder> {}
 
         [Subject(typeof(YahooWebRequestBuilderSpecs))]
         public class when_building_a_web_request : concern
         {
             Establish c = () =>
             {
-                base_url = YahooWebRequestBuilder.BaseUrl;
+                base_url = YahooQuoteWebRequestBuilder.BaseUrl;
                 tickers_url_parameter = "s=GOOG+MSFT";
                 return_parameters_url_parameter = "f=snl1d1t1";
 
@@ -28,7 +29,7 @@ namespace YSQ.tests.Quotes.Request.Processing
                 var tickers_builder = depends.on<YahooTickersUrlParameterBuilder>();
                 var return_parameters_builder = depends.on<YahooReturnParametersUrlParameterBuilder>();
 
-                tickers_builder.setup(x => x.Build(quote_request)).Return(tickers_url_parameter);
+                tickers_builder.setup(x => x.Build(quote_request.Tickers)).Return(tickers_url_parameter);
                 return_parameters_builder.setup(x => x.Build(quote_request)).Return(return_parameters_url_parameter);
             };
 

@@ -10,3 +10,5 @@ C:\dev\yahoo_stock_quotes\src\core\bin\Debug\YSQ.core.dll
 C:\dev\yahoo_stock_quotes\src\core\bin\Debug\YSQ.core.pdb
 C:\dev\yahoo_stock_quotes\src\core\obj\Debug\YSQ.core.dll
 C:\dev\yahoo_stock_quotes\src\core\obj\Debug\YSQ.core.pdb
+C:\dev\yahoo_stock_quotes\src\core\bin\Debug\LumenWorks.Framework.IO.dll
+C:\dev\yahoo_stock_quotes\src\core\bin\Debug\LumenWorks.Framework.IO.xml

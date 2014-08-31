@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Net;
 
-namespace YSQ.core.Quotes.Request.Processing
+namespace YSQ.core.Processing
 {
     public interface IParseACsvResponse
     {
-        IEnumerable<string> Parse(WebResponse response);
+        IEnumerable<string> ParseToLines(WebResponse response);
     }
 }

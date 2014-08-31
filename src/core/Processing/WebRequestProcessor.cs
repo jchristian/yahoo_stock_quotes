@@ -1,6 +1,6 @@
 using System.Net;
 
-namespace YSQ.core.Quotes.Request.Processing
+namespace YSQ.core.Processing
 {
     public class WebRequestProcessor : IProcessAWebRequest
     {

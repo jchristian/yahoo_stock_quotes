@@ -1,5 +1,6 @@
 using Machine.Specifications;
 using YSQ.core;
+using YSQ.core.Quotes;
 using YSQ.core.Quotes.Request;
 using YSQ.core.Quotes.Request.Processing;
 using developwithpassion.specifications.extensions;

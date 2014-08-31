@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using YSQ.core.Quotes.Request.Processing;
+using YSQ.core.Processing;
 
 namespace YSQ.core.Quotes.Response.Processing
 {
@@ -17,7 +17,7 @@ namespace YSQ.core.Quotes.Response.Processing
 
         public IEnumerable<dynamic> Return(QuoteResponse quote_response)
         {
-            return csv_response_parser.Parse(quote_response.WebResponse).Select(yahoo_quote => yahoo_quote_parser.Parse(yahoo_quote, quote_response.QuoteRequest.ReturnParameters));
+            return csv_response_parser.ParseToLines(quote_response.WebResponse).Select(yahoo_quote => yahoo_quote_parser.Parse(yahoo_quote, quote_response.QuoteRequest.ReturnParameters));
         }
     }
 }

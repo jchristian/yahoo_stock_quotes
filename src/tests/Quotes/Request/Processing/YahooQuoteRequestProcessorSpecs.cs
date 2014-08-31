@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using Machine.Specifications;
+using YSQ.core.Processing;
 using YSQ.core.Quotes.Request;
 using YSQ.core.Quotes.Request.Processing;
 using YSQ.core.Quotes.Response;
@@ -24,7 +25,7 @@ namespace YSQ.tests.Quotes.Request.Processing
                 quote_request = new QuoteRequest();
                 processed_web_response = Enumerable.Empty<dynamic>();
 
-                var web_request_builder = depends.on<IBuildAWebRequest>();
+                var web_request_builder = depends.on<IBuildAQuoteWebRequest>();
                 var web_request_processor = depends.on<IProcessAWebRequest>();
                 var web_response_processor = depends.on<IProcessAQuoteResponse>();
 

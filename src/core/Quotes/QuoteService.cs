@@ -2,7 +2,7 @@
 using YSQ.core.Quotes.Request;
 using YSQ.core.Quotes.Request.Processing;
 
-namespace YSQ.core
+namespace YSQ.core.Quotes
 {
     public class QuoteService : IBuildQuotes, IFindQuotes
     {

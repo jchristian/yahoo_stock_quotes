@@ -52,3 +52,5 @@ C:\dev\yahoo_stock_quotes\src\tests\bin\Debug\Moq.xml
 C:\dev\yahoo_stock_quotes\src\tests\obj\Debug\tests.csprojResolveAssemblyReference.cache
 C:\dev\yahoo_stock_quotes\src\tests\obj\Debug\YSQ.tests.dll
 C:\dev\yahoo_stock_quotes\src\tests\obj\Debug\YSQ.tests.pdb
+C:\dev\yahoo_stock_quotes\src\tests\bin\Debug\LumenWorks.Framework.IO.dll
+C:\dev\yahoo_stock_quotes\src\tests\bin\Debug\LumenWorks.Framework.IO.xml

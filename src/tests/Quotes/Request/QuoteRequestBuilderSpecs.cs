@@ -1,6 +1,7 @@
 using System.Linq;
 using Machine.Specifications;
 using YSQ.core;
+using YSQ.core.Quotes;
 using YSQ.core.Quotes.Request;
 using developwithpassion.specifications.moq;
 

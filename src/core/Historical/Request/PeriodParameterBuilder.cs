@@ -1,0 +1,18 @@
+﻿namespace YSQ.core.Historical.Request
+{
+    public class PeriodParameterBuilder
+    {
+        public virtual string Build(Period period)
+        {
+            var start = "g=";
+
+            if (period == Period.Daily)
+                return start + "d";
+            if (period == Period.Weekly)
+                return start + "w";
+            if (period == Period.Monthly)
+                return start + "m";
+            return "";
+        }
+    }
+}

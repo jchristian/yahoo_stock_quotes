@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LumenWorks.Framework.IO">
+      <HintPath>..\..\packages\LumenWorks.Framework.IO.3.8.0\lib\net20\LumenWorks.Framework.IO.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,26 +42,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IBuildQuotes.cs" />
-    <Compile Include="IFindQuotes.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Historical\HistoricalPrice.cs" />
+    <Compile Include="Historical\HistoricalPriceService.cs" />
+    <Compile Include="Historical\IGetHistoricalPrices.cs" />
+    <Compile Include="Historical\Period.cs" />
+    <Compile Include="Historical\Request\DateParameterBuilder.cs" />
+    <Compile Include="Historical\Request\HistoricalPriceRequest.cs" />
+    <Compile Include="Historical\Request\HistoricalPriceWebRequestBuilder.cs" />
+    <Compile Include="Historical\Request\HistoricPriceRequestProcessor.cs" />
+    <Compile Include="Historical\Request\PeriodParameterBuilder.cs" />
+    <Compile Include="Historical\Response\HistoricalPriceResponse.cs" />
+    <Compile Include="Historical\Response\HistoricalPriceResponseProcessor.cs" />
     <Compile Include="InitializationFactory.cs" />
+    <Compile Include="Processing\CsvResponseParser.cs" />
+    <Compile Include="Processing\IParseACsvResponse.cs" />
+    <Compile Include="Processing\IProcessAWebRequest.cs" />
+    <Compile Include="Processing\ParsedCSVFile.cs" />
+    <Compile Include="Processing\WebRequestProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuoteService.cs" />
+    <Compile Include="Quotes\IBuildQuotes.cs" />
+    <Compile Include="Quotes\IFindQuotes.cs" />
+    <Compile Include="Quotes\QuoteReturnParameter.cs" />
+    <Compile Include="Quotes\QuoteService.cs" />
     <Compile Include="Quotes\Request\IBuildAQuoteRequest.cs" />
-    <Compile Include="Quotes\Request\Processing\IBuildAWebRequest.cs" />
-    <Compile Include="Quotes\Request\Processing\IParseACsvResponse.cs" />
-    <Compile Include="Quotes\Request\Processing\IProcessAWebRequest.cs" />
+    <Compile Include="Quotes\Request\Processing\IBuildAQuoteWebRequest.cs" />
     <Compile Include="Quotes\Request\Processing\IProcessQuoteRequests.cs" />
-    <Compile Include="Quotes\Request\Processing\WebRequestProcessor.cs" />
     <Compile Include="Quotes\Request\Processing\YahooQuoteRequestProcessor.cs" />
     <Compile Include="Quotes\Request\Processing\YahooReturnParameterMap.cs" />
     <Compile Include="Quotes\Request\Processing\YahooReturnParametersUrlParameterBuilder.cs" />
     <Compile Include="Quotes\Request\Processing\YahooTickersUrlParameterBuilder.cs" />
-    <Compile Include="Quotes\Request\Processing\YahooWebRequestBuilder.cs" />
+    <Compile Include="Quotes\Request\Processing\YahooQuoteWebRequestBuilder.cs" />
     <Compile Include="Quotes\Request\QuoteRequest.cs" />
     <Compile Include="Quotes\Request\QuoteRequestBuilder.cs" />
-    <Compile Include="QuoteReturnParameter.cs" />
-    <Compile Include="Quotes\Response\Processing\CsvResponseParser.cs" />
     <Compile Include="Quotes\Response\Processing\IParseAYahooQuote.cs" />
     <Compile Include="Quotes\Response\Processing\IProcessAQuoteResponse.cs" />
     <Compile Include="Quotes\Response\Processing\YahooQuoteParser.cs" />
@@ -66,6 +82,10 @@
     <Compile Include="Quotes\Response\QuoteResponse.cs" />
     <Compile Include="Quotes\YahooQuote.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

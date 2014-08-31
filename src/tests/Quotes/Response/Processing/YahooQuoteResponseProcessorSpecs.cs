@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using Machine.Specifications;
 using YSQ.core;
+using YSQ.core.Processing;
+using YSQ.core.Quotes;
 using YSQ.core.Quotes.Request;
 using YSQ.core.Quotes.Request.Processing;
 using YSQ.core.Quotes.Response;
@@ -32,7 +34,7 @@ namespace YSQ.tests.Quotes.Response.Processing
 
                 var first_yahoo_quote = "first_quote";
                 var second_yahoo_quote = "second_quote";
-                csv_response_processor.setup(x => x.Parse(quoted_response.WebResponse)).Return(new[] { first_yahoo_quote, second_yahoo_quote });
+                csv_response_processor.setup(x => x.ParseToLines(quoted_response.WebResponse)).Return(new[] { first_yahoo_quote, second_yahoo_quote });
                 yahoo_quote_parser.setup(x => x.Parse(first_yahoo_quote, quoted_response.QuoteRequest.ReturnParameters)).Return(first_parsed_quote);
                 yahoo_quote_parser.setup(x => x.Parse(second_yahoo_quote, quoted_response.QuoteRequest.ReturnParameters)).Return(second_parsed_quote);
             };

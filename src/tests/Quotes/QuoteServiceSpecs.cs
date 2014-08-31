@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Machine.Specifications;
-using YSQ.core;
-using YSQ.core.Quotes.Request;
-using YSQ.core.Quotes.Request.Processing;
+using System.Linq;
 using developwithpassion.specifications.extensions;
 using developwithpassion.specifications.moq;
-using System.Linq;
+using Machine.Specifications;
+using YSQ.core.Quotes;
+using YSQ.core.Quotes.Request;
+using YSQ.core.Quotes.Request.Processing;
 
-namespace YSQ.tests
+namespace YSQ.tests.Quotes
 {
     public class QuoteServiceSpecs
     {
