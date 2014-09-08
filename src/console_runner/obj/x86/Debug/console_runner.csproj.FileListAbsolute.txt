@@ -20,7 +20,7 @@ C:\dev\yahoo_stock_quotes\src\console_runner\obj\x86\Debug\YSQ.console_runner.pd
 C:\dev\yahoo_stock_quotes\src\console_runner\obj\x86\Debug\console_runner.csprojResolveAssemblyReference.cache
 C:\dev\yahoo_stock_quotes\src\console_runner\bin\Debug\YSQ.console_runner.exe
 C:\dev\yahoo_stock_quotes\src\console_runner\bin\Debug\YSQ.console_runner.pdb
-C:\dev\yahoo_stock_quotes\src\console_runner\bin\Debug\YSQ.core.dll
-C:\dev\yahoo_stock_quotes\src\console_runner\bin\Debug\YSQ.core.pdb
 C:\dev\yahoo_stock_quotes\src\console_runner\bin\Debug\LumenWorks.Framework.IO.dll
 C:\dev\yahoo_stock_quotes\src\console_runner\bin\Debug\LumenWorks.Framework.IO.xml
+C:\dev\yahoo_stock_quotes\src\console_runner\bin\Debug\YSQ.core.dll
+C:\dev\yahoo_stock_quotes\src\console_runner\bin\Debug\YSQ.core.pdb

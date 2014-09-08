@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using YSQ.core;
 using YSQ.core.Historical;
 using YSQ.core.Quotes;
