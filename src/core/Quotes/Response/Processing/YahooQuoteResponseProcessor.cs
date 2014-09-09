@@ -4,7 +4,7 @@ using YSQ.core.Processing;
 
 namespace YSQ.core.Quotes.Response.Processing
 {
-    public class YahooQuoteResponseProcessor : IProcessAQuoteResponse
+    internal class YahooQuoteResponseProcessor : IProcessAQuoteResponse
     {
         IParseACsvResponse csv_response_parser;
         IParseAYahooQuote yahoo_quote_parser;

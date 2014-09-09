@@ -3,7 +3,7 @@ using YSQ.core.Processing;
 
 namespace YSQ.core.Historical.Request
 {
-    public class HistoricPriceRequestProcessor
+    internal class HistoricPriceRequestProcessor
     {
         HistoricalPriceWebRequestBuilder historical_price_web_request_builder;
         IProcessAWebRequest web_request_processor;

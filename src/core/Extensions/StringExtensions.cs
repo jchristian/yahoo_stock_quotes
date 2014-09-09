@@ -2,7 +2,7 @@ using System.Text.RegularExpressions;
 
 namespace YSQ.core.Extensions
 {
-    public static class StringExtensions
+    internal static class StringExtensions
     {
         public static string RemoveWhitespace(this string str)
         {

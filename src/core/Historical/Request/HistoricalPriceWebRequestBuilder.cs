@@ -3,7 +3,7 @@ using YSQ.core.Quotes.Request.Processing;
 
 namespace YSQ.core.Historical.Request
 {
-    public class HistoricalPriceWebRequestBuilder
+    internal class HistoricalPriceWebRequestBuilder
     {
         const string Base_Url = @"http://real-chart.finance.yahoo.com/table.csv";
         const string Terminator = @"&ignore=.csv";

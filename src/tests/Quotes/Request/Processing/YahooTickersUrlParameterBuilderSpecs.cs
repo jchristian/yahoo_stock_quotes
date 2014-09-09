@@ -8,10 +8,10 @@ namespace YSQ.tests.Quotes.Request.Processing
 {
     public class YahooTickersUrlParameterBuilderSpecs
     {
-        public abstract class concern : Observes<YahooTickersUrlParameterBuilder> {}
+        internal abstract class concern : Observes<YahooTickersUrlParameterBuilder> {}
 
         [Subject(typeof(YahooTickersUrlParameterBuilder))]
-        public class when_building_the_tickers_parameter : concern
+        internal class when_building_the_tickers_parameter : concern
         {
             Establish c = () =>
             {

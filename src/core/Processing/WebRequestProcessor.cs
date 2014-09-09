@@ -2,7 +2,7 @@ using System.Net;
 
 namespace YSQ.core.Processing
 {
-    public class WebRequestProcessor : IProcessAWebRequest
+    internal class WebRequestProcessor : IProcessAWebRequest
     {
         public WebResponse Process(WebRequest web_request)
         {

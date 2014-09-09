@@ -62,7 +62,9 @@
     <Compile Include="Processing\ParsedCSVFile.cs" />
     <Compile Include="Processing\WebRequestProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Quotes\IBuildAQuote.cs" />
     <Compile Include="Quotes\IBuildQuotes.cs" />
+    <Compile Include="Quotes\IFindAQuote.cs" />
     <Compile Include="Quotes\IFindQuotes.cs" />
     <Compile Include="Quotes\QuoteReturnParameter.cs" />
     <Compile Include="Quotes\QuoteService.cs" />

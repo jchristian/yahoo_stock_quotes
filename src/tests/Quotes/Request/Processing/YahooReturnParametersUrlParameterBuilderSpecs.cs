@@ -10,10 +10,10 @@ namespace YSQ.tests.Quotes.Request.Processing
 {
     public class YahooReturnParametersUrlParameterBuilderSpecs
     {
-        public abstract class concern : Observes<YahooReturnParametersUrlParameterBuilder> {}
+        internal abstract class concern : Observes<YahooReturnParametersUrlParameterBuilder> {}
 
         [Subject(typeof(YahooReturnParametersUrlParameterBuilder))]
-        public class when_building_the_return_parameters_url_parameter : concern
+        internal class when_building_the_return_parameters_url_parameter : concern
         {
             Establish c = () =>
             {

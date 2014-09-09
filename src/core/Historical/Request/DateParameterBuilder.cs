@@ -2,7 +2,7 @@
 
 namespace YSQ.core.Historical.Request
 {
-    public class DateParameterBuilder
+    internal class DateParameterBuilder
     {
         public virtual string Build(DateTime start_date, string month_param, string day_param, string year_param)
         {

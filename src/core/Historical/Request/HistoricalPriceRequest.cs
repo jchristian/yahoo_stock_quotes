@@ -2,7 +2,7 @@
 
 namespace YSQ.core.Historical.Request
 {
-    public class HistoricalPriceRequest
+    internal class HistoricalPriceRequest
     {
         public string Ticker { get; set; }
         public DateTime StartDate { get; set; }

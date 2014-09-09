@@ -9,11 +9,11 @@ namespace YSQ.tests.Quotes.Request
 {
     public class QuoteRequestBuilderSpecs
     {
-        public abstract class concern : Observes<IBuildAQuoteRequest,
+        internal abstract class concern : Observes<IBuildAQuoteRequest,
                                             QuoteRequestBuilder> { }
 
         [Subject(typeof(QuoteRequestBuilder))]
-        public class when_building_the_ticker_symbol : concern
+        internal class when_building_the_ticker_symbol : concern
         {
             Because of = () =>
                 quote_request = sut.For(the_ticker).Return(Enumerable.Empty<QuoteReturnParameter>());
@@ -26,7 +26,7 @@ namespace YSQ.tests.Quotes.Request
         }
 
         [Subject(typeof(QuoteRequestBuilder))]
-        public class when_building_the_data_to_return : concern
+        internal class when_building_the_data_to_return : concern
         {
             Because of = () =>
                 quote_request = sut.For(null).Return(new[] { QuoteReturnParameter.Symbol, QuoteReturnParameter.LatestTradePrice });

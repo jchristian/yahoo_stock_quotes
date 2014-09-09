@@ -3,7 +3,7 @@ using YSQ.core.Historical.Request;
 
 namespace YSQ.core.Historical.Response
 {
-    public class HistoricalPriceResponse
+    internal class HistoricalPriceResponse
     {
         public WebResponse WebResponse { get; set; }
         public HistoricalPriceRequest HistoricalPriceRequest { get; set; }

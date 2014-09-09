@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace YSQ.core.Quotes.Response.Processing
 {
-    public class YahooQuoteParser : IParseAYahooQuote
+    internal class YahooQuoteParser : IParseAYahooQuote
     {
         public dynamic Parse(string quote_data, IEnumerable<QuoteReturnParameter> return_parameters)
         {

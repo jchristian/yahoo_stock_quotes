@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace YSQ.core.Quotes.Request.Processing
 {
-    public class YahooReturnParameterMap
+    internal class YahooReturnParameterMap
     {
         static readonly IDictionary<QuoteReturnParameter, string> map = new Dictionary<QuoteReturnParameter, string>
         {

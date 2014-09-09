@@ -5,7 +5,7 @@ using YSQ.core.Processing;
 
 namespace YSQ.core.Historical.Response
 {
-    public class HistoricalPriceResponseProcessor
+    internal class HistoricalPriceResponseProcessor
     {
         CsvResponseParser csv_response_parser;
 

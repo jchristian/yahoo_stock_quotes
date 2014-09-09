@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace YSQ.core.Quotes.Request.Processing
 {
-    public class YahooTickersUrlParameterBuilder
+    internal class YahooTickersUrlParameterBuilder
     {
         public virtual string Build(params string[] tickers)
         {

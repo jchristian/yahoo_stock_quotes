@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace YSQ.core.Quotes.Request
 {
-    public class QuoteRequestBuilder : IBuildAQuoteRequest
+    internal class QuoteRequestBuilder : IBuildAQuoteRequest
     {
         IEnumerable<string> tickers;
 

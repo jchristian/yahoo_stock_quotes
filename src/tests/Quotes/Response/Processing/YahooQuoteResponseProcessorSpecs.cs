@@ -3,11 +3,9 @@ using System.Dynamic;
 using System.Linq;
 using System.Net;
 using Machine.Specifications;
-using YSQ.core;
 using YSQ.core.Processing;
 using YSQ.core.Quotes;
 using YSQ.core.Quotes.Request;
-using YSQ.core.Quotes.Request.Processing;
 using YSQ.core.Quotes.Response;
 using YSQ.core.Quotes.Response.Processing;
 using developwithpassion.specifications.extensions;
@@ -17,11 +15,11 @@ namespace YSQ.tests.Quotes.Response.Processing
 {
     public class YahooQuoteResponseProcessorSpecs
     {
-        public abstract class concern : Observes<IProcessAQuoteResponse,
+        internal abstract class concern : Observes<IProcessAQuoteResponse,
                                             YahooQuoteResponseProcessor> {}
 
         [Subject(typeof(YahooQuoteResponseProcessor))]
-        public class when_processing_a_quote_response : concern
+        internal class when_processing_a_quote_response : concern
         {
             Establish c = () =>
             {

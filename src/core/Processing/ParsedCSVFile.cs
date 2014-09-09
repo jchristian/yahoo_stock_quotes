@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace YSQ.core.Processing
 {
-    public class ParsedCSVFile
+    internal class ParsedCSVFile
     {
         public IEnumerable<dynamic> Rows { get; set; }
         public IEnumerable<string> FieldNames { get; set; }

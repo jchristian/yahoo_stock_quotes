@@ -2,7 +2,7 @@ using System.Linq;
 
 namespace YSQ.core.Quotes.Request.Processing
 {
-    public class YahooReturnParametersUrlParameterBuilder
+    internal class YahooReturnParametersUrlParameterBuilder
     {
         YahooReturnParameterMap return_parameter_map;
 

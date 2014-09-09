@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace YSQ.core.Quotes.Response.Processing
 {
-    public interface IProcessAQuoteResponse
+    internal interface IProcessAQuoteResponse
     {
         IEnumerable<dynamic> Return(QuoteResponse quote_response);
     }

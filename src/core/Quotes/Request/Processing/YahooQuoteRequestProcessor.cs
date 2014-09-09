@@ -5,7 +5,7 @@ using YSQ.core.Quotes.Response.Processing;
 
 namespace YSQ.core.Quotes.Request.Processing
 {
-    public class YahooQuoteRequestProcessor : IProcessQuoteRequests
+    internal class YahooQuoteRequestProcessor : IProcessQuoteRequests
     {
         IBuildAQuoteWebRequest quote_web_request_builder;
         IProcessAWebRequest web_request_processor;

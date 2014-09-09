@@ -3,7 +3,7 @@ using YSQ.core.Quotes.Request;
 
 namespace YSQ.core.Quotes.Response
 {
-    public class QuoteResponse
+    internal class QuoteResponse
     {
         public WebResponse WebResponse { get; private set; }
         public QuoteRequest QuoteRequest { get; private set; }

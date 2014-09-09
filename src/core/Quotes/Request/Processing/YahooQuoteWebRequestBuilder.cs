@@ -2,7 +2,7 @@ using System.Net;
 
 namespace YSQ.core.Quotes.Request.Processing
 {
-    public class YahooQuoteWebRequestBuilder : IBuildAQuoteWebRequest
+    internal class YahooQuoteWebRequestBuilder : IBuildAQuoteWebRequest
     {
         public const string BaseUrl = "http://finance.yahoo.com/d/quotes.csv";
 

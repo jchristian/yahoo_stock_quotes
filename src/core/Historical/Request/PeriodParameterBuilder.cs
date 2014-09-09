@@ -1,6 +1,6 @@
 ﻿namespace YSQ.core.Historical.Request
 {
-    public class PeriodParameterBuilder
+    internal class PeriodParameterBuilder
     {
         public virtual string Build(Period period)
         {

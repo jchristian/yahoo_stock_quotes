@@ -9,11 +9,11 @@ namespace YSQ.tests.Quotes.Response.Processing
 {
     public class YahooQuoteProcessorSpecs
     {
-        public abstract class concern : Observes<IParseAYahooQuote,
+        internal abstract class concern : Observes<IParseAYahooQuote,
                                             YahooQuoteParser> {}
 
         [Subject(typeof(YahooQuoteParser))]
-        public class when_parsing_a_yahoo_quote : concern
+        internal class when_parsing_a_yahoo_quote : concern
         {
             Establish c = () =>
             {

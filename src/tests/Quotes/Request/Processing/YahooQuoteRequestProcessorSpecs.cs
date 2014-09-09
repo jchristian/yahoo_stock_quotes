@@ -14,11 +14,11 @@ namespace YSQ.tests.Quotes.Request.Processing
 {
     public class YahooQuoteRequestProcessorSpecs
     {
-        public abstract class concern : Observes<IProcessQuoteRequests,
+        internal abstract class concern : Observes<IProcessQuoteRequests,
                                             YahooQuoteRequestProcessor> {}
 
         [Subject(typeof(YahooQuoteRequestProcessor))]
-        public class when_processing_a_quote_request : concern
+        internal class when_processing_a_quote_request : concern
         {
             Establish c = () =>
             {

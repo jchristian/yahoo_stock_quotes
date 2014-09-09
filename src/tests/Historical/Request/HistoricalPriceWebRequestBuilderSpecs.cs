@@ -10,10 +10,10 @@ namespace YSQ.tests.Historical.Request
 {
     public class HistoricalPriceWebRequestBuilderSpecs
     {
-        public abstract class concern : Observes<HistoricalPriceWebRequestBuilder> {}
+        internal abstract class concern : Observes<HistoricalPriceWebRequestBuilder> {}
 
         [Subject(typeof(HistoricalPriceWebRequestBuilder))]
-        public class when_building_the_historical_price_web_request : concern
+        internal class when_building_the_historical_price_web_request : concern
         {
             Establish c = () =>
             {

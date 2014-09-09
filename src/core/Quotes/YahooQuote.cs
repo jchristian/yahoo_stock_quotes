@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace YSQ.core.Quotes
 {
-    public class YahooQuote : DynamicObject
+    internal class YahooQuote : DynamicObject
     {
         IDictionary<string, string> return_parameter_dictionary;
 

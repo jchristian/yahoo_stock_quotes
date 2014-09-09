@@ -8,10 +8,10 @@ namespace YSQ.tests.Historical
 {
     public class HistoricalPriceServiceSpecs
     {
-        public abstract class concern : Observes<HistoricalPriceService> {}
+        internal abstract class concern : Observes<HistoricalPriceService> {}
 
         [Subject(typeof(HistoricalPriceService))]
-        public class when_getting_the_historical_prices_for_VTIAX : concern
+        internal class when_getting_the_historical_prices_for_VTIAX : concern
         {
             public class and_the_period_is_daily
             {

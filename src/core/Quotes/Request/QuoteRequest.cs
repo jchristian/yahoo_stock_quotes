@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace YSQ.core.Quotes.Request
 {
-    public class QuoteRequest
+    internal class QuoteRequest
     {
         public IEnumerable<string> Tickers { get; set; }
         public IEnumerable<QuoteReturnParameter> ReturnParameters { get; set; }

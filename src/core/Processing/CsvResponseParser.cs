@@ -8,7 +8,7 @@ using YSQ.core.Extensions;
 
 namespace YSQ.core.Processing
 {
-    public class CsvResponseParser : IParseACsvResponse
+    internal class CsvResponseParser : IParseACsvResponse
     {
         public IEnumerable<string> ParseToLines(WebResponse response)
         {

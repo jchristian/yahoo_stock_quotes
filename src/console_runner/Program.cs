@@ -21,6 +21,12 @@ namespace YSQ.console_runner
                 Console.WriteLine("{0} - {1} - {2} - {3}", quote.Symbol, quote.Name, quote.LatestTradePrice, quote.LatestTradeTime);
             }
 
+            var google_quote = quote_service.Quote("GOOG").Return(QuoteReturnParameter.Symbol,
+                                                                  QuoteReturnParameter.Name,
+                                                                  QuoteReturnParameter.LatestTradePrice,
+                                                                  QuoteReturnParameter.LatestTradeTime);
+            Console.WriteLine("{0} - {1} - {2} - {3}", google_quote.Symbol, google_quote.Name, google_quote.LatestTradePrice, google_quote.LatestTradeTime);
+
             Console.ReadLine();
             Console.WriteLine();
 

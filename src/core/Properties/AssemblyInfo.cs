@@ -34,3 +34,7 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.4")]
 [assembly: AssemblyFileVersion("1.0.4")]
+
+[assembly: InternalsVisibleTo("YSQ.tests")]
+[assembly: InternalsVisibleTo("Moq")]
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]

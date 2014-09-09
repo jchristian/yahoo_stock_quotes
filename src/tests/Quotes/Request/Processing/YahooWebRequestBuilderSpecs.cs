@@ -12,11 +12,11 @@ namespace YSQ.tests.Quotes.Request.Processing
 {
     public class YahooWebRequestBuilderSpecs
     {
-        public abstract class concern : Observes<IBuildAQuoteWebRequest,
+        internal abstract class concern : Observes<IBuildAQuoteWebRequest,
                                             YahooQuoteWebRequestBuilder> {}
 
         [Subject(typeof(YahooWebRequestBuilderSpecs))]
-        public class when_building_a_web_request : concern
+        internal class when_building_a_web_request : concern
         {
             Establish c = () =>
             {
