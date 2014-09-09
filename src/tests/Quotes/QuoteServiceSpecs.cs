@@ -30,6 +30,7 @@ namespace YSQ.tests.Quotes
                     foreach (var return_parameter in Enum.GetValues(typeof(QuoteReturnParameter)).Cast<QuoteReturnParameter>())
                     {
                         Debug.WriteLine("{0} - {1} - {2}", (string)quote.Name, return_parameter.ToString(), (string)quote[return_parameter.ToString()]);
+                        Debug.WriteLine("{0} - {1} - {2}", (string)quote.Name, return_parameter.ToString(), (string)quote[return_parameter]);
                     }
                 }
             };

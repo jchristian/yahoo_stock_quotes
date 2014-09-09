@@ -28,10 +28,17 @@ namespace YSQ.core.Quotes
 
         public override bool TryGetIndex(GetIndexBinder binder, object[] indexes, out object result)
         {
-            var index = indexes.First() as String;
-            if (return_parameter_dictionary.ContainsKey(index))
+            var index = indexes.First() as string;
+            if (index != null && return_parameter_dictionary.ContainsKey(index))
             {
                 result = return_parameter_dictionary[index];
+                return true;
+            }
+
+            var indexAsEnum = indexes.First() as QuoteReturnParameter?;
+            if (indexAsEnum != null && return_parameter_dictionary.ContainsKey(indexAsEnum.Value.ToString()))
+            {
+                result = return_parameter_dictionary[indexAsEnum.ToString()];
                 return true;
             }
 
