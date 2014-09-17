@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using YSQ.core.Processing;
 
@@ -18,7 +19,7 @@ namespace YSQ.core.Historical.Response
         {
             var rows = csv_response_parser.ParseToRows(response.WebResponse);
 
-            return rows.Rows.Select(x => new HistoricalPrice(DateTime.Parse((string)x.Date), Decimal.Parse(x.Close))).ToList();
+            return rows.Rows.Select(x => new HistoricalPrice(DateTime.Parse((string)x.Date, new CultureInfo("en-US")), Decimal.Parse(x.Close, new CultureInfo("en-US")))).ToList();
         }
     }
 }
