@@ -18,7 +18,7 @@ namespace YSQ.core.Historical.Response
         {
             var rows = csv_response_parser.ParseToRows(response.WebResponse);
 
-            return rows.Rows.Select(x => new HistoricalPrice(DateTime.Parse((string)x.Date), Decimal.Parse(x.Open))).ToList();
+            return rows.Rows.Select(x => new HistoricalPrice(DateTime.Parse((string)x.Date), Decimal.Parse(x.Close))).ToList();
         }
     }
 }
