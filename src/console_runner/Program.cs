@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+using System.Threading;
 using YSQ.core.Historical;
 using YSQ.core.Quotes;
 
@@ -8,6 +10,7 @@ namespace YSQ.console_runner
     {
         static void Main(string[] args)
         {
+
             var quote_service = new QuoteService();
             var quotes = quote_service.Quote("MSFT", "GOOG").Return(QuoteReturnParameter.Symbol,
                                                                     QuoteReturnParameter.Name,
