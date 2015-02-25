@@ -4,6 +4,12 @@
         <name>LumenWorks.Framework.IO</name>
     </assembly>
     <members>
+        <member name="T:LumenWorks.Framework.IO.Csv.CachedCsvReader">
+            <summary>
+            Represents a reader that provides fast, cached, dynamic access to CSV data.
+            </summary>
+            <remarks>The number of records is limited to <see cref="F:System.Int32.MaxValue"/> - 1.</remarks>
+        </member>
         <member name="T:LumenWorks.Framework.IO.Csv.CsvReader">
             <summary>
             Represents a reader that provides fast, non-cached, forward-only access to CSV data.  
@@ -696,6 +702,11 @@
             </summary>
             <value>The default header name when it is an empty string or only whitespaces.</value>
         </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.Columns">
+            <summary>
+            Gets or sets column information for the CSV.
+            </summary>
+        </member>
         <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.FieldCount">
             <summary>
             Gets the maximum number of fields to retrieve for each record.
@@ -842,6 +853,26 @@
             	<see langword="true"/> if the instance has been disposed of; otherwise, <see langword="false"/>.
             </value>
         </member>
+        <member name="T:LumenWorks.Framework.IO.Csv.CsvReader.DataReaderValidations">
+            <summary>
+            Defines the data reader validations.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.CsvReader.DataReaderValidations.None">
+            <summary>
+            No validation.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.CsvReader.DataReaderValidations.IsInitialized">
+            <summary>
+            Validate that the data reader is initialized.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.CsvReader.DataReaderValidations.IsNotClosed">
+            <summary>
+            Validate that the data reader is not closed.
+            </summary>
+        </member>
         <member name="T:LumenWorks.Framework.IO.Csv.CsvReader.RecordEnumerator">
             <summary>
             Supports a simple iteration over the records of a <see cref="T:CsvReader"/>.
@@ -896,195 +927,6 @@
             <summary>
             Gets the current record.
             </summary>
-        </member>
-        <member name="T:LumenWorks.Framework.IO.Csv.CsvReader.DataReaderValidations">
-            <summary>
-            Defines the data reader validations.
-            </summary>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.CsvReader.DataReaderValidations.None">
-            <summary>
-            No validation.
-            </summary>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.CsvReader.DataReaderValidations.IsInitialized">
-            <summary>
-            Validate that the data reader is initialized.
-            </summary>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.CsvReader.DataReaderValidations.IsNotClosed">
-            <summary>
-            Validate that the data reader is not closed.
-            </summary>
-        </member>
-        <member name="T:LumenWorks.Framework.IO.Csv.MissingFieldCsvException">
-            <summary>
-            Represents the exception that is thrown when a there is a missing field in a record of the CSV file.
-            </summary>
-            <remarks>
-            MissingFieldException would have been a better name, but there is already a <see cref="T:System.MissingFieldException"/>.
-            </remarks>
-        </member>
-        <member name="T:LumenWorks.Framework.IO.Csv.MalformedCsvException">
-            <summary>
-            Represents the exception that is thrown when a CSV file is malformed.
-            </summary>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.MalformedCsvException._message">
-            <summary>
-            Contains the message that describes the error.
-            </summary>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.MalformedCsvException._rawData">
-            <summary>
-            Contains the raw data when the error occured.
-            </summary>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.MalformedCsvException._currentFieldIndex">
-            <summary>
-            Contains the current field index.
-            </summary>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.MalformedCsvException._currentRecordIndex">
-            <summary>
-            Contains the current record index.
-            </summary>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.MalformedCsvException._currentPosition">
-            <summary>
-            Contains the current position in the raw data.
-            </summary>
-        </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.MalformedCsvException.#ctor">
-            <summary>
-            Initializes a new instance of the MalformedCsvException class.
-            </summary>
-        </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.MalformedCsvException.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the MalformedCsvException class.
-            </summary>
-            <param name="message">The message that describes the error.</param>
-        </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.MalformedCsvException.#ctor(System.String,System.Exception)">
-            <summary>
-            Initializes a new instance of the MalformedCsvException class.
-            </summary>
-            <param name="message">The message that describes the error.</param>
-            <param name="innerException">The exception that is the cause of the current exception.</param>
-        </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.MalformedCsvException.#ctor(System.String,System.Int32,System.Int64,System.Int32)">
-            <summary>
-            Initializes a new instance of the MalformedCsvException class.
-            </summary>
-            <param name="rawData">The raw data when the error occured.</param>
-            <param name="currentPosition">The current position in the raw data.</param>
-            <param name="currentRecordIndex">The current record index.</param>
-            <param name="currentFieldIndex">The current field index.</param>
-        </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.MalformedCsvException.#ctor(System.String,System.Int32,System.Int64,System.Int32,System.Exception)">
-            <summary>
-            Initializes a new instance of the MalformedCsvException class.
-            </summary>
-            <param name="rawData">The raw data when the error occured.</param>
-            <param name="currentPosition">The current position in the raw data.</param>
-            <param name="currentRecordIndex">The current record index.</param>
-            <param name="currentFieldIndex">The current field index.</param>
-            <param name="innerException">The exception that is the cause of the current exception.</param>
-        </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.MalformedCsvException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            Initializes a new instance of the MalformedCsvException class with serialized data.
-            </summary>
-            <param name="info">The <see cref="T:SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
-            <param name="context">The <see cref="T:StreamingContext"/> that contains contextual information about the source or destination.</param>
-        </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.MalformedCsvException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            When overridden in a derived class, sets the <see cref="T:SerializationInfo"/> with information about the exception.
-            </summary>
-            <param name="info">The <see cref="T:SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
-            <param name="context">The <see cref="T:StreamingContext"/> that contains contextual information about the source or destination.</param>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.MalformedCsvException.RawData">
-            <summary>
-            Gets the raw data when the error occured.
-            </summary>
-            <value>The raw data when the error occured.</value>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.MalformedCsvException.CurrentPosition">
-            <summary>
-            Gets the current position in the raw data.
-            </summary>
-            <value>The current position in the raw data.</value>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.MalformedCsvException.CurrentRecordIndex">
-            <summary>
-            Gets the current record index.
-            </summary>
-            <value>The current record index.</value>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.MalformedCsvException.CurrentFieldIndex">
-            <summary>
-            Gets the current field index.
-            </summary>
-            <value>The current record index.</value>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.MalformedCsvException.Message">
-            <summary>
-            Gets a message that describes the current exception.
-            </summary>
-            <value>A message that describes the current exception.</value>
-        </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.MissingFieldCsvException.#ctor">
-            <summary>
-            Initializes a new instance of the MissingFieldCsvException class.
-            </summary>
-        </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.MissingFieldCsvException.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the MissingFieldCsvException class.
-            </summary>
-            <param name="message">The message that describes the error.</param>
-        </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.MissingFieldCsvException.#ctor(System.String,System.Exception)">
-            <summary>
-            Initializes a new instance of the MissingFieldCsvException class.
-            </summary>
-            <param name="message">The message that describes the error.</param>
-            <param name="innerException">The exception that is the cause of the current exception.</param>
-        </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.MissingFieldCsvException.#ctor(System.String,System.Int32,System.Int64,System.Int32)">
-            <summary>
-            Initializes a new instance of the MissingFieldCsvException class.
-            </summary>
-            <param name="rawData">The raw data when the error occured.</param>
-            <param name="currentPosition">The current position in the raw data.</param>
-            <param name="currentRecordIndex">The current record index.</param>
-            <param name="currentFieldIndex">The current field index.</param>
-        </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.MissingFieldCsvException.#ctor(System.String,System.Int32,System.Int64,System.Int32,System.Exception)">
-            <summary>
-            Initializes a new instance of the MissingFieldCsvException class.
-            </summary>
-            <param name="rawData">The raw data when the error occured.</param>
-            <param name="currentPosition">The current position in the raw data.</param>
-            <param name="currentRecordIndex">The current record index.</param>
-            <param name="currentFieldIndex">The current field index.</param>
-            <param name="innerException">The exception that is the cause of the current exception.</param>
-        </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.MissingFieldCsvException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            Initializes a new instance of the MissingFieldCsvException class with serialized data.
-            </summary>
-            <param name="info">The <see cref="T:SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
-            <param name="context">The <see cref="T:StreamingContext"/> that contains contextual information about the source or destination.</param>
-        </member>
-        <member name="T:LumenWorks.Framework.IO.Csv.CachedCsvReader">
-            <summary>
-            Represents a reader that provides fast, cached, dynamic access to CSV data.
-            </summary>
-            <remarks>The number of records is limited to <see cref="F:System.Int32.MaxValue"/> - 1.</remarks>
         </member>
         <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader._records">
             <summary>
@@ -1283,28 +1125,6 @@
             	The instance has been disposed of.
             </exception>
         </member>
-        <member name="T:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvRecordComparer">
-            <summary>
-            Represents a CSV record comparer.
-            </summary>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvRecordComparer._field">
-            <summary>
-            Contains the field index of the values to compare.
-            </summary>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvRecordComparer._direction">
-            <summary>
-            Contains the sort direction.
-            </summary>
-        </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvRecordComparer.#ctor(System.Int32,System.ComponentModel.ListSortDirection)">
-            <summary>
-            Initializes a new instance of the CsvRecordComparer class.
-            </summary>
-            <param name="field">The field index of the values to compare.</param>
-            <param name="direction">The sort direction.</param>
-        </member>
         <member name="T:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvBindingList">
             <summary>
             Represents a binding list wrapper for a CSV reader.
@@ -1363,6 +1183,265 @@
             Gets the field index.
             </summary>
             <value>The field index.</value>
+        </member>
+        <member name="T:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvRecordComparer">
+            <summary>
+            Represents a CSV record comparer.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvRecordComparer._field">
+            <summary>
+            Contains the field index of the values to compare.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvRecordComparer._direction">
+            <summary>
+            Contains the sort direction.
+            </summary>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvRecordComparer.#ctor(System.Int32,System.ComponentModel.ListSortDirection)">
+            <summary>
+            Initializes a new instance of the CsvRecordComparer class.
+            </summary>
+            <param name="field">The field index of the values to compare.</param>
+            <param name="direction">The sort direction.</param>
+        </member>
+        <member name="T:LumenWorks.Framework.IO.Csv.ParseErrorEventArgs">
+            <summary>
+            Provides data for the <see cref="M:CsvReader.ParseError"/> event.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.ParseErrorEventArgs._error">
+            <summary>
+            Contains the error that occured.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.ParseErrorEventArgs._action">
+            <summary>
+            Contains the action to take.
+            </summary>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.ParseErrorEventArgs.#ctor(LumenWorks.Framework.IO.Csv.MalformedCsvException,LumenWorks.Framework.IO.Csv.ParseErrorAction)">
+            <summary>
+            Initializes a new instance of the ParseErrorEventArgs class.
+            </summary>
+            <param name="error">The error that occured.</param>
+            <param name="defaultAction">The default action to take.</param>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.ParseErrorEventArgs.Error">
+            <summary>
+            Gets the error that occured.
+            </summary>
+            <value>The error that occured.</value>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.ParseErrorEventArgs.Action">
+            <summary>
+            Gets or sets the action to take.
+            </summary>
+            <value>The action to take.</value>
+        </member>
+        <member name="T:LumenWorks.Framework.IO.Csv.MalformedCsvException">
+            <summary>
+            Represents the exception that is thrown when a CSV file is malformed.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.MalformedCsvException._message">
+            <summary>
+            Contains the message that describes the error.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.MalformedCsvException._rawData">
+            <summary>
+            Contains the raw data when the error occured.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.MalformedCsvException._currentFieldIndex">
+            <summary>
+            Contains the current field index.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.MalformedCsvException._currentRecordIndex">
+            <summary>
+            Contains the current record index.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.MalformedCsvException._currentPosition">
+            <summary>
+            Contains the current position in the raw data.
+            </summary>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.MalformedCsvException.#ctor">
+            <summary>
+            Initializes a new instance of the MalformedCsvException class.
+            </summary>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.MalformedCsvException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the MalformedCsvException class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.MalformedCsvException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the MalformedCsvException class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.MalformedCsvException.#ctor(System.String,System.Int32,System.Int64,System.Int32)">
+            <summary>
+            Initializes a new instance of the MalformedCsvException class.
+            </summary>
+            <param name="rawData">The raw data when the error occured.</param>
+            <param name="currentPosition">The current position in the raw data.</param>
+            <param name="currentRecordIndex">The current record index.</param>
+            <param name="currentFieldIndex">The current field index.</param>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.MalformedCsvException.#ctor(System.String,System.Int32,System.Int64,System.Int32,System.Exception)">
+            <summary>
+            Initializes a new instance of the MalformedCsvException class.
+            </summary>
+            <param name="rawData">The raw data when the error occured.</param>
+            <param name="currentPosition">The current position in the raw data.</param>
+            <param name="currentRecordIndex">The current record index.</param>
+            <param name="currentFieldIndex">The current field index.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.MalformedCsvException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the MalformedCsvException class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:StreamingContext"/> that contains contextual information about the source or destination.</param>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.MalformedCsvException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            When overridden in a derived class, sets the <see cref="T:SerializationInfo"/> with information about the exception.
+            </summary>
+            <param name="info">The <see cref="T:SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:StreamingContext"/> that contains contextual information about the source or destination.</param>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.MalformedCsvException.RawData">
+            <summary>
+            Gets the raw data when the error occured.
+            </summary>
+            <value>The raw data when the error occured.</value>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.MalformedCsvException.CurrentPosition">
+            <summary>
+            Gets the current position in the raw data.
+            </summary>
+            <value>The current position in the raw data.</value>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.MalformedCsvException.CurrentRecordIndex">
+            <summary>
+            Gets the current record index.
+            </summary>
+            <value>The current record index.</value>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.MalformedCsvException.CurrentFieldIndex">
+            <summary>
+            Gets the current field index.
+            </summary>
+            <value>The current record index.</value>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.MalformedCsvException.Message">
+            <summary>
+            Gets a message that describes the current exception.
+            </summary>
+            <value>A message that describes the current exception.</value>
+        </member>
+        <member name="T:LumenWorks.Framework.IO.Csv.MissingFieldCsvException">
+            <summary>
+            Represents the exception that is thrown when a there is a missing field in a record of the CSV file.
+            </summary>
+            <remarks>
+            MissingFieldException would have been a better name, but there is already a <see cref="T:System.MissingFieldException"/>.
+            </remarks>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.MissingFieldCsvException.#ctor">
+            <summary>
+            Initializes a new instance of the MissingFieldCsvException class.
+            </summary>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.MissingFieldCsvException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the MissingFieldCsvException class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.MissingFieldCsvException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the MissingFieldCsvException class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.MissingFieldCsvException.#ctor(System.String,System.Int32,System.Int64,System.Int32)">
+            <summary>
+            Initializes a new instance of the MissingFieldCsvException class.
+            </summary>
+            <param name="rawData">The raw data when the error occured.</param>
+            <param name="currentPosition">The current position in the raw data.</param>
+            <param name="currentRecordIndex">The current record index.</param>
+            <param name="currentFieldIndex">The current field index.</param>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.MissingFieldCsvException.#ctor(System.String,System.Int32,System.Int64,System.Int32,System.Exception)">
+            <summary>
+            Initializes a new instance of the MissingFieldCsvException class.
+            </summary>
+            <param name="rawData">The raw data when the error occured.</param>
+            <param name="currentPosition">The current position in the raw data.</param>
+            <param name="currentRecordIndex">The current record index.</param>
+            <param name="currentFieldIndex">The current field index.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.MissingFieldCsvException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the MissingFieldCsvException class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:StreamingContext"/> that contains contextual information about the source or destination.</param>
+        </member>
+        <member name="T:LumenWorks.Framework.IO.Csv.MissingFieldAction">
+            <summary>
+            Specifies the action to take when a field is missing.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.MissingFieldAction.ParseError">
+            <summary>
+            Treat as a parsing error.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.MissingFieldAction.ReplaceByEmpty">
+            <summary>
+            Replaces by an empty value.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.MissingFieldAction.ReplaceByNull">
+            <summary>
+            Replaces by a null value (<see langword="null"/>).
+            </summary>
+        </member>
+        <member name="T:LumenWorks.Framework.IO.Csv.ParseErrorAction">
+            <summary>
+            Specifies the action to take when a parsing error has occured.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.ParseErrorAction.RaiseEvent">
+            <summary>
+            Raises the <see cref="M:CsvReader.ParseError"/> event.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.ParseErrorAction.AdvanceToNextLine">
+            <summary>
+            Tries to advance to next line.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.ParseErrorAction.ThrowException">
+            <summary>
+            Throws an exception.
+            </summary>
         </member>
         <member name="T:LumenWorks.Framework.IO.Csv.Resources.ExceptionMessage">
             <summary>
@@ -1460,78 +1539,39 @@
               Looks up a localized string similar to Record index must be 0 or more..
             </summary>
         </member>
-        <member name="T:LumenWorks.Framework.IO.Csv.ParseErrorEventArgs">
+        <member name="T:LumenWorks.Framework.IO.Csv.Column">
             <summary>
-            Provides data for the <see cref="M:CsvReader.ParseError"/> event.
+            Metadata about a CSV column.
             </summary>
         </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.ParseErrorEventArgs._error">
+        <member name="M:LumenWorks.Framework.IO.Csv.Column.#ctor">
             <summary>
-            Contains the error that occured.
+            Creates a new instance of the <see cref="T:LumenWorks.Framework.IO.Csv.Column"/> class.
             </summary>
         </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.ParseErrorEventArgs._action">
+        <member name="M:LumenWorks.Framework.IO.Csv.Column.Convert(System.String)">
             <summary>
-            Contains the action to take.
+            Converts the value into the column type.
+            </summary>
+            <param name="value">Value to use</param>
+            <returns>Converted value.</returns>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.Column.TryConvert(System.String,System.Object@)">
+            <summary>
+            Converts the value into the column type.
+            </summary>
+            <param name="value">Value to use</param>
+            <param name="result">Object to hold the converted value.</param>
+            <returns>true if the conversion was successful, otherwise false.</returns>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.Column.Name">
+            <summary>
+            Get or set the name.
             </summary>
         </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.ParseErrorEventArgs.#ctor(LumenWorks.Framework.IO.Csv.MalformedCsvException,LumenWorks.Framework.IO.Csv.ParseErrorAction)">
+        <member name="P:LumenWorks.Framework.IO.Csv.Column.Type">
             <summary>
-            Initializes a new instance of the ParseErrorEventArgs class.
-            </summary>
-            <param name="error">The error that occured.</param>
-            <param name="defaultAction">The default action to take.</param>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.ParseErrorEventArgs.Error">
-            <summary>
-            Gets the error that occured.
-            </summary>
-            <value>The error that occured.</value>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.ParseErrorEventArgs.Action">
-            <summary>
-            Gets or sets the action to take.
-            </summary>
-            <value>The action to take.</value>
-        </member>
-        <member name="T:LumenWorks.Framework.IO.Csv.ParseErrorAction">
-            <summary>
-            Specifies the action to take when a parsing error has occured.
-            </summary>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.ParseErrorAction.RaiseEvent">
-            <summary>
-            Raises the <see cref="M:CsvReader.ParseError"/> event.
-            </summary>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.ParseErrorAction.AdvanceToNextLine">
-            <summary>
-            Tries to advance to next line.
-            </summary>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.ParseErrorAction.ThrowException">
-            <summary>
-            Throws an exception.
-            </summary>
-        </member>
-        <member name="T:LumenWorks.Framework.IO.Csv.MissingFieldAction">
-            <summary>
-            Specifies the action to take when a field is missing.
-            </summary>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.MissingFieldAction.ParseError">
-            <summary>
-            Treat as a parsing error.
-            </summary>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.MissingFieldAction.ReplaceByEmpty">
-            <summary>
-            Replaces by an empty value.
-            </summary>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.MissingFieldAction.ReplaceByNull">
-            <summary>
-            Replaces by a null value (<see langword="null"/>).
+            Get or set the type.
             </summary>
         </member>
     </members>

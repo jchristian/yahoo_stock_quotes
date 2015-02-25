@@ -37,7 +37,7 @@ namespace YSQ.tests.Quotes.Request.Processing
                 built_web_request = sut.Build(quote_request);
 
             It should_return_the_base_url_and_the_tickers_and_the_return_parameters = () =>
-                built_web_request.RequestUri.AbsoluteUri.ShouldEqual(base_url + "?" + tickers_url_parameter + "&" + return_parameters_url_parameter);
+                built_web_request.RequestUri.AbsoluteUri.ShouldEqual(base_url + "?" + tickers_url_parameter + "&" + return_parameters_url_parameter + "&" + YahooQuoteWebRequestBuilder.CsvFileTypeSpecifier);
 
             static WebRequest built_web_request;
             static QuoteRequest quote_request;

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Globalization;
-using System.Threading;
 using YSQ.core.Historical;
 using YSQ.core.Quotes;
 
@@ -10,7 +8,6 @@ namespace YSQ.console_runner
     {
         static void Main(string[] args)
         {
-
             var quote_service = new QuoteService();
             var quotes = quote_service.Quote("MSFT", "GOOG").Return(QuoteReturnParameter.Symbol,
                                                                     QuoteReturnParameter.Name,
@@ -22,7 +19,7 @@ namespace YSQ.console_runner
                 Console.WriteLine("{0} - {1} - {2} - {3}", quote.Symbol, quote.Name, quote.LatestTradePrice, quote.LatestTradeTime);
             }
 
-            var google_quote = quote_service.Quote("GOOG").Return(QuoteReturnParameter.Symbol,
+            var google_quote = quote_service.Quote("DHI").Return(QuoteReturnParameter.Symbol,
                                                                   QuoteReturnParameter.Name,
                                                                   QuoteReturnParameter.LatestTradePrice,
                                                                   QuoteReturnParameter.LatestTradeTime);
@@ -30,7 +27,6 @@ namespace YSQ.console_runner
                                                        google_quote[QuoteReturnParameter.Name],
                                                        google_quote[QuoteReturnParameter.LatestTradePrice],
                                                        google_quote[QuoteReturnParameter.LatestTradeTime]);
-
             Console.ReadLine();
             Console.WriteLine();
 

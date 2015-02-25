@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>YahooStockQuotes</id>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <title>Yahoo Stock Quotes</title>
     <description>Easily get stock quotes and historical prices from the Yahoo Finance API</description>
     <authors>Jonathan Christian</authors>
@@ -10,7 +10,7 @@
     <copyright>Copyright 2014</copyright>
     <tags>finance stock quote</tags>
     <dependencies>
-      <dependency id="LumenWorks.Framework.IO" version="3.8.0" />
+      <dependency id="LumenWorksCsvReader" version="3.8.2" />
     </dependencies>
   </metadata>
     <files>

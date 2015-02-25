@@ -37,8 +37,9 @@
     <Reference Include="developwithpassion.specifications.moq">
       <HintPath>..\..\packages\developwithpassion.specifications.moq.0.5.9\lib\developwithpassion.specifications.moq.dll</HintPath>
     </Reference>
-    <Reference Include="LumenWorks.Framework.IO">
-      <HintPath>..\..\packages\LumenWorks.Framework.IO.3.8.0\lib\net20\LumenWorks.Framework.IO.dll</HintPath>
+    <Reference Include="LumenWorks.Framework.IO, Version=3.8.2.0, Culture=neutral, PublicKeyToken=5ad3ea2f85776344, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\LumenWorksCsvReader.3.8.2\lib\net20\LumenWorks.Framework.IO.dll</HintPath>
     </Reference>
     <Reference Include="Machine.Fakes">
       <HintPath>..\..\packages\Machine.Fakes.0.5.1\lib\net40\Machine.Fakes.dll</HintPath>
@@ -68,6 +69,7 @@
     <Compile Include="Historical\Request\HistoricalPriceWebRequestBuilderSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Quotes\QuoteServiceSpecs.cs" />
+    <Compile Include="Quotes\Request\Processing\YahooQuoteParserSpecs.cs" />
     <Compile Include="Quotes\Request\Processing\YahooQuoteRequestProcessorSpecs.cs" />
     <Compile Include="Quotes\Request\Processing\YahooReturnParametersUrlParameterBuilderSpecs.cs" />
     <Compile Include="Quotes\Request\Processing\YahooTickersUrlParameterBuilderSpecs.cs" />
