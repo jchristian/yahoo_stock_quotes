@@ -2,15 +2,15 @@
 <package>
   <metadata>
     <id>YahooStockQuotes</id>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
     <title>Yahoo Stock Quotes</title>
     <description>Easily get stock quotes and historical prices from the Yahoo Finance API</description>
     <authors>Jonathan Christian</authors>
     <projectUrl>https://github.com/jchristian/yahoo_stock_quotes</projectUrl>
-    <copyright>Copyright 2014</copyright>
+    <copyright>Copyright 2017</copyright>
     <tags>finance stock quote</tags>
     <dependencies>
-      <dependency id="LumenWorksCsvReader" version="3.8.2" />
+      <dependency id="LumenWorksCsvReader" version="3.9.1" />
     </dependencies>
   </metadata>
     <files>

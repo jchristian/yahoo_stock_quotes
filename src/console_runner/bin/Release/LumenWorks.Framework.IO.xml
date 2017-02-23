@@ -4,6 +4,292 @@
         <name>LumenWorks.Framework.IO</name>
     </assembly>
     <members>
+        <member name="T:LumenWorks.Framework.IO.Csv.CachedCsvReader">
+            <summary>
+            Represents a reader that provides fast, cached, dynamic access to CSV data.
+            </summary>
+            <remarks>The number of records is limited to <see cref="F:System.Int32.MaxValue"/> - 1.</remarks>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader._records">
+            <summary>
+            Contains the cached records.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader._currentRecordIndex">
+            <summary>
+            Contains the current record index (inside the cached records array).
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader._readingStream">
+            <summary>
+            Indicates if a new record is being read from the CSV stream.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader._bindingList">
+            <summary>
+            Contains the binding list linked to this reader.
+            </summary>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.#ctor(System.IO.TextReader,System.Boolean)">
+            <summary>
+            Initializes a new instance of the CsvReader class.
+            </summary>
+            <param name="reader">A <see cref="T:TextReader"/> pointing to the CSV file.</param>
+            <param name="hasHeaders"><see langword="true"/> if field names are located on the first non commented line, otherwise, <see langword="false"/>.</param>
+            <exception cref="T:ArgumentNullException">
+            	<paramref name="reader"/> is a <see langword="null"/>.
+            </exception>
+            <exception cref="T:ArgumentException">
+            	Cannot read from <paramref name="reader"/>.
+            </exception>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.#ctor(System.IO.TextReader,System.Boolean,System.Int32)">
+            <summary>
+            Initializes a new instance of the CsvReader class.
+            </summary>
+            <param name="reader">A <see cref="T:TextReader"/> pointing to the CSV file.</param>
+            <param name="hasHeaders"><see langword="true"/> if field names are located on the first non commented line, otherwise, <see langword="false"/>.</param>
+            <param name="bufferSize">The buffer size in bytes.</param>
+            <exception cref="T:ArgumentNullException">
+            	<paramref name="reader"/> is a <see langword="null"/>.
+            </exception>
+            <exception cref="T:ArgumentException">
+            	Cannot read from <paramref name="reader"/>.
+            </exception>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.#ctor(System.IO.TextReader,System.Boolean,System.Char)">
+            <summary>
+            Initializes a new instance of the CsvReader class.
+            </summary>
+            <param name="reader">A <see cref="T:TextReader"/> pointing to the CSV file.</param>
+            <param name="hasHeaders"><see langword="true"/> if field names are located on the first non commented line, otherwise, <see langword="false"/>.</param>
+            <param name="delimiter">The delimiter character separating each field (default is ',').</param>
+            <exception cref="T:ArgumentNullException">
+            	<paramref name="reader"/> is a <see langword="null"/>.
+            </exception>
+            <exception cref="T:ArgumentException">
+            	Cannot read from <paramref name="reader"/>.
+            </exception>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.#ctor(System.IO.TextReader,System.Boolean,System.Char,System.Int32)">
+            <summary>
+            Initializes a new instance of the CsvReader class.
+            </summary>
+            <param name="reader">A <see cref="T:TextReader"/> pointing to the CSV file.</param>
+            <param name="hasHeaders"><see langword="true"/> if field names are located on the first non commented line, otherwise, <see langword="false"/>.</param>
+            <param name="delimiter">The delimiter character separating each field (default is ',').</param>
+            <param name="bufferSize">The buffer size in bytes.</param>
+            <exception cref="T:ArgumentNullException">
+            	<paramref name="reader"/> is a <see langword="null"/>.
+            </exception>
+            <exception cref="T:ArgumentException">
+            	Cannot read from <paramref name="reader"/>.
+            </exception>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.#ctor(System.IO.TextReader,System.Boolean,System.Char,System.Char,System.Char,System.Char,LumenWorks.Framework.IO.Csv.ValueTrimmingOptions,System.String)">
+            <summary>
+            Initializes a new instance of the CsvReader class.
+            </summary>
+            <param name="reader">A <see cref="T:TextReader"/> pointing to the CSV file.</param>
+            <param name="hasHeaders"><see langword="true"/> if field names are located on the first non commented line, otherwise, <see langword="false"/>.</param>
+            <param name="delimiter">The delimiter character separating each field (default is ',').</param>
+            <param name="quote">The quotation character wrapping every field (default is ''').</param>
+            <param name="escape">
+            The escape character letting insert quotation characters inside a quoted field (default is '\').
+            If no escape character, set to '\0' to gain some performance.
+            </param>
+            <param name="comment">The comment character indicating that a line is commented out (default is '#').</param>
+            <param name="trimmingOptions">Determines how values should be trimmed.</param>
+            <param name="nullValue">The value which denotes a DbNull-value.</param>
+            <exception cref="T:ArgumentNullException">
+            	<paramref name="reader"/> is a <see langword="null"/>.
+            </exception>
+            <exception cref="T:ArgumentException">
+            	Cannot read from <paramref name="reader"/>.
+            </exception>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.#ctor(System.IO.TextReader,System.Boolean,System.Char,System.Char,System.Char,System.Char,LumenWorks.Framework.IO.Csv.ValueTrimmingOptions,System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the CsvReader class.
+            </summary>
+            <param name="reader">A <see cref="T:TextReader"/> pointing to the CSV file.</param>
+            <param name="hasHeaders"><see langword="true"/> if field names are located on the first non commented line, otherwise, <see langword="false"/>.</param>
+            <param name="delimiter">The delimiter character separating each field (default is ',').</param>
+            <param name="quote">The quotation character wrapping every field (default is ''').</param>
+            <param name="escape">
+            The escape character letting insert quotation characters inside a quoted field (default is '\').
+            If no escape character, set to '\0' to gain some performance.
+            </param>
+            <param name="comment">The comment character indicating that a line is commented out (default is '#').</param>
+            <param name="trimmingOptions">Determines how values should be trimmed.</param>
+            <param name="bufferSize">The buffer size in bytes.</param>
+            <param name="nullValue">The value which denotes a DbNull-value.</param>
+            <exception cref="T:ArgumentNullException">
+            	<paramref name="reader"/> is a <see langword="null"/>.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            	<paramref name="bufferSize"/> must be 1 or more.
+            </exception>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CachedCsvReader.CurrentRecordIndex">
+            <summary>
+            Gets the current record index in the CSV file.
+            </summary>
+            <value>The current record index in the CSV file.</value>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CachedCsvReader.EndOfStream">
+            <summary>
+            Gets a value that indicates whether the current stream position is at the end of the stream.
+            </summary>
+            <value><see langword="true"/> if the current stream position is at the end of the stream; otherwise <see langword="false"/>.</value>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CachedCsvReader.Item(System.Int32)">
+            <summary>
+            Gets the field at the specified index.
+            </summary>
+            <value>The field at the specified index.</value>
+            <exception cref="T:ArgumentOutOfRangeException">
+            	<paramref name="field"/> must be included in [0, <see cref="M:FieldCount"/>[.
+            </exception>
+            <exception cref="T:InvalidOperationException">
+            	No record read yet. Call ReadLine() first.
+            </exception>
+            <exception cref="T:LumenWorks.Framework.IO.Csv.MissingFieldCsvException">
+            	The CSV data appears to be missing a field.
+            </exception>
+            <exception cref="T:MalformedCsvException">
+            	The CSV appears to be corrupt at the current position.
+            </exception>
+            <exception cref="T:System.ComponentModel.ObjectDisposedException">
+            	The instance has been disposed of.
+            </exception>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.ReadToEnd">
+            <summary>
+            Reads the CSV stream from the current position to the end of the stream.
+            </summary>
+            <exception cref="T:System.ComponentModel.ObjectDisposedException">
+            The instance has been disposed of.
+            </exception>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.ReadNextRecord(System.Boolean,System.Boolean)">
+            <summary>
+            Reads the next record.
+            </summary>
+            <param name="onlyReadHeaders">
+            Indicates if the reader will proceed to the next record after having read headers.
+            <see langword="true"/> if it stops after having read headers; otherwise, <see langword="false"/>.
+            </param>
+            <param name="skipToNextLine">
+            Indicates if the reader will skip directly to the next line without parsing the current one. 
+            To be used when an error occurs.
+            </param>
+            <returns><see langword="true"/> if a record has been successfully reads; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ComponentModel.ObjectDisposedException">
+            The instance has been disposed of.
+            </exception>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.MoveToStart">
+            <summary>
+            Moves before the first record.
+            </summary>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.MoveToLastCachedRecord">
+            <summary>
+            Moves to the last record read so far.
+            </summary>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.MoveTo(System.Int64)">
+            <summary>
+            Moves to the specified record index.
+            </summary>
+            <param name="record">The record index.</param>
+            <returns><c>true</c> if the operation was successful; otherwise, <c>false</c>.</returns>
+            <exception cref="T:System.ComponentModel.ObjectDisposedException">
+            	The instance has been disposed of.
+            </exception>
+        </member>
+        <member name="T:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvBindingList">
+            <summary>
+            Represents a binding list wrapper for a CSV reader.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvBindingList._csv">
+            <summary>
+            Contains the linked CSV reader.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvBindingList._count">
+            <summary>
+            Contains the cached record count.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvBindingList._properties">
+            <summary>
+            Contains the cached property descriptors.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvBindingList._sort">
+            <summary>
+            Contains the current sort property.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvBindingList._direction">
+            <summary>
+            Contains the current sort direction.
+            </summary>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvBindingList.#ctor(LumenWorks.Framework.IO.Csv.CachedCsvReader)">
+            <summary>
+            Initializes a new instance of the CsvBindingList class.
+            </summary>
+            <param name="csv"></param>
+        </member>
+        <member name="T:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvPropertyDescriptor">
+            <summary>
+            Represents a CSV field property descriptor.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvPropertyDescriptor._index">
+            <summary>
+            Contains the field index.
+            </summary>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvPropertyDescriptor.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the CsvPropertyDescriptor class.
+            </summary>
+            <param name="fieldName">The field name.</param>
+            <param name="index">The field index.</param>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvPropertyDescriptor.Index">
+            <summary>
+            Gets the field index.
+            </summary>
+            <value>The field index.</value>
+        </member>
+        <member name="T:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvRecordComparer">
+            <summary>
+            Represents a CSV record comparer.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvRecordComparer._field">
+            <summary>
+            Contains the field index of the values to compare.
+            </summary>
+        </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvRecordComparer._direction">
+            <summary>
+            Contains the sort direction.
+            </summary>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvRecordComparer.#ctor(System.Int32,System.ComponentModel.ListSortDirection)">
+            <summary>
+            Initializes a new instance of the CsvRecordComparer class.
+            </summary>
+            <param name="field">The field index of the values to compare.</param>
+            <param name="direction">The sort direction.</param>
+        </member>
         <member name="T:LumenWorks.Framework.IO.Csv.CsvReader">
             <summary>
             Represents a reader that provides fast, non-cached, forward-only access to CSV data.  
@@ -32,11 +318,6 @@
         <member name="F:LumenWorks.Framework.IO.Csv.CsvReader.DefaultComment">
             <summary>
             Defines the default comment character indicating that a line is commented out.
-            </summary>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.CsvReader._fieldHeaderComparer">
-            <summary>
-            Contains the field header comparer.
             </summary>
         </member>
         <member name="F:LumenWorks.Framework.IO.Csv.CsvReader._reader">
@@ -74,6 +355,11 @@
             Determines which values should be trimmed.
             </summary>
         </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.CsvReader._nullValue">
+            <summary>
+            Contains the value which denotes a DbNull-value.
+            </summary>
+        </member>
         <member name="F:LumenWorks.Framework.IO.Csv.CsvReader._hasHeaders">
             <summary>
             Indicates if field names are located on the first non commented line.
@@ -94,6 +380,11 @@
             Indicates if the reader supports multiline.
             </summary>
         </member>
+        <member name="F:LumenWorks.Framework.IO.Csv.CsvReader._maxQuotedFieldLength">
+            <summary>
+            Contains a maximum length (in bytes) of an individual quoted field to be read; null if not specified
+            </summary>
+        </member>
         <member name="F:LumenWorks.Framework.IO.Csv.CsvReader._skipEmptyLines">
             <summary>
             Indicates if the reader will skip empty lines.
@@ -102,11 +393,6 @@
         <member name="F:LumenWorks.Framework.IO.Csv.CsvReader._initialized">
             <summary>
             Indicates if the class is initialized.
-            </summary>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.CsvReader._fieldHeaders">
-            <summary>
-            Contains the field headers.
             </summary>
         </member>
         <member name="F:LumenWorks.Framework.IO.Csv.CsvReader._fieldHeaderIndexes">
@@ -237,7 +523,7 @@
             	Cannot read from <paramref name="reader"/>.
             </exception>
         </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.CsvReader.#ctor(System.IO.TextReader,System.Boolean,System.Char,System.Char,System.Char,System.Char,LumenWorks.Framework.IO.Csv.ValueTrimmingOptions)">
+        <member name="M:LumenWorks.Framework.IO.Csv.CsvReader.#ctor(System.IO.TextReader,System.Boolean,System.Char,System.Char,System.Char,System.Char,LumenWorks.Framework.IO.Csv.ValueTrimmingOptions,System.String)">
             <summary>
             Initializes a new instance of the CsvReader class.
             </summary>
@@ -251,6 +537,7 @@
             </param>
             <param name="comment">The comment character indicating that a line is commented out (default is '#').</param>
             <param name="trimmingOptions">Determines which values should be trimmed.</param>
+            <param name="nullValue">The value which denotes a DbNull-value.</param>
             <exception cref="T:ArgumentNullException">
             	<paramref name="reader"/> is a <see langword="null"/>.
             </exception>
@@ -258,7 +545,7 @@
             	Cannot read from <paramref name="reader"/>.
             </exception>
         </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.CsvReader.#ctor(System.IO.TextReader,System.Boolean,System.Char,System.Char,System.Char,System.Char,LumenWorks.Framework.IO.Csv.ValueTrimmingOptions,System.Int32)">
+        <member name="M:LumenWorks.Framework.IO.Csv.CsvReader.#ctor(System.IO.TextReader,System.Boolean,System.Char,System.Char,System.Char,System.Char,LumenWorks.Framework.IO.Csv.ValueTrimmingOptions,System.Int32,System.String)">
             <summary>
             Initializes a new instance of the CsvReader class.
             </summary>
@@ -273,6 +560,7 @@
             <param name="comment">The comment character indicating that a line is commented out (default is '#').</param>
             <param name="trimmingOptions">Determines which values should be trimmed.</param>
             <param name="bufferSize">The buffer size in bytes.</param>
+            <param name="nullValue">The value which denotes a DbNull-value.</param>
             <exception cref="T:ArgumentNullException">
             	<paramref name="reader"/> is a <see langword="null"/>.
             </exception>
@@ -280,17 +568,248 @@
             	<paramref name="bufferSize"/> must be 1 or more.
             </exception>
         </member>
+        <member name="E:LumenWorks.Framework.IO.Csv.CsvReader.ParseError">
+            <summary>
+            Occurs when there is an error while parsing the CSV stream.
+            </summary>
+        </member>
         <member name="M:LumenWorks.Framework.IO.Csv.CsvReader.OnParseError(LumenWorks.Framework.IO.Csv.ParseErrorEventArgs)">
             <summary>
             Raises the <see cref="M:ParseError"/> event.
             </summary>
             <param name="e">The <see cref="T:LumenWorks.Framework.IO.Csv.ParseErrorEventArgs"/> that contains the event data.</param>
         </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.Comment">
+            <summary>
+            Gets the comment character indicating that a line is commented out.
+            </summary>
+            <value>The comment character indicating that a line is commented out.</value>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.Escape">
+            <summary>
+            Gets the escape character letting insert quotation characters inside a quoted field.
+            </summary>
+            <value>The escape character letting insert quotation characters inside a quoted field.</value>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.Delimiter">
+            <summary>
+            Gets the delimiter character separating each field.
+            </summary>
+            <value>The delimiter character separating each field.</value>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.Quote">
+            <summary>
+            Gets the quotation character wrapping every field.
+            </summary>
+            <value>The quotation character wrapping every field.</value>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.HasHeaders">
+            <summary>
+            Indicates if field names are located on the first non commented line.
+            </summary>
+            <value><see langword="true"/> if field names are located on the first non commented line, otherwise, <see langword="false"/>.</value>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.TrimmingOption">
+            <summary>
+            Indicates if spaces at the start and end of a field are trimmed.
+            </summary>
+            <value><see langword="true"/> if spaces at the start and end of a field are trimmed, otherwise, <see langword="false"/>.</value>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.NullValue">
+            <summary>
+            Contains the value which denotes a DbNull-value.
+            </summary>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.BufferSize">
+            <summary>
+            Gets the buffer size.
+            </summary>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.DefaultParseErrorAction">
+            <summary>
+            Gets or sets the default action to take when a parsing error has occured.
+            </summary>
+            <value>The default action to take when a parsing error has occured.</value>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.MissingFieldAction">
+            <summary>
+            Gets or sets the action to take when a field is missing.
+            </summary>
+            <value>The action to take when a field is missing.</value>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.SupportsMultiline">
+            <summary>
+            Gets or sets a value indicating if the reader supports multiline fields.
+            </summary>
+            <value>A value indicating if the reader supports multiline field.</value>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.MaxQuotedFieldLength">
+            <summary>
+            Gets or sets a value giving a maxmimum length (in bytes) for any quoted field.
+            </summary>
+            <value>The maximum length (in bytes) of a CSV field.</value>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.SkipEmptyLines">
+            <summary>
+            Gets or sets a value indicating if the reader will skip empty lines.
+            </summary>
+            <value>A value indicating if the reader will skip empty lines.</value>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.DefaultHeaderName">
+            <summary>
+            Gets or sets the default header name when it is an empty string or only whitespaces.
+            The header index will be appended to the specified name.
+            </summary>
+            <value>The default header name when it is an empty string or only whitespaces.</value>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.Columns">
+            <summary>
+            Gets or sets column information for the CSV.
+            </summary>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.UseColumnDefaults">
+            <summary>
+            Gets or sets whether we should use the column default values if the field is not in the record.
+            </summary>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.FieldCount">
+            <summary>
+            Gets the maximum number of fields to retrieve for each record.
+            </summary>
+            <value>The maximum number of fields to retrieve for each record.</value>
+            <exception cref="T:System.ComponentModel.ObjectDisposedException">
+            The instance has been disposed of.
+            </exception>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.EndOfStream">
+            <summary>
+            Gets a value that indicates whether the current stream position is at the end of the stream.
+            </summary>
+            <value><see langword="true"/> if the current stream position is at the end of the stream; otherwise <see langword="false"/>.</value>
+        </member>
         <member name="M:LumenWorks.Framework.IO.Csv.CsvReader.GetFieldHeaders">
             <summary>
             Gets the field headers.
             </summary>
             <returns>The field headers or an empty array if headers are not supported.</returns>
+            <exception cref="T:System.ComponentModel.ObjectDisposedException">
+            The instance has been disposed of.
+            </exception>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.CurrentRecordIndex">
+            <summary>
+            Gets the current record index in the CSV file.
+            </summary>
+            <value>The current record index in the CSV file.</value>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.MissingFieldFlag">
+            <summary>
+            Indicates if one or more field are missing for the current record.
+            Resets after each successful record read.
+            </summary>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.ParseErrorFlag">
+            <summary>
+            Indicates if a parse error occured for the current record.
+            Resets after each successful record read.
+            </summary>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.Item(System.Int32,System.String)">
+            <summary>
+            Gets the field with the specified name and record position. <see cref="M:hasHeaders"/> must be <see langword="true"/>.
+            </summary>
+            <value>
+            The field with the specified name and record position.
+            </value>
+            <exception cref="T:ArgumentNullException">
+            	<paramref name="field"/> is <see langword="null"/> or an empty string.
+            </exception>
+            <exception cref="T:InvalidOperationException">
+            The CSV does not have headers (<see cref="M:HasHeaders"/> property is <see langword="false"/>).
+            </exception>
+            <exception cref="T:ArgumentException">
+            	<paramref name="field"/> not found.
+            </exception>
+            <exception cref="T:ArgumentOutOfRangeException">
+            	Record index must be > 0.
+            </exception>
+            <exception cref="T:InvalidOperationException">
+            	Cannot move to a previous record in forward-only mode.
+            </exception>
+            <exception cref="T:EndOfStreamException">
+            	Cannot read record at <paramref name="record"/>.
+            </exception>
+            <exception cref="T:MalformedCsvException">
+            	The CSV appears to be corrupt at the current position.
+            </exception>
+            <exception cref="T:System.ComponentModel.ObjectDisposedException">
+            The instance has been disposed of.
+            </exception>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.Item(System.Int32,System.Int32)">
+            <summary>
+            Gets the field at the specified index and record position.
+            </summary>
+            <value>
+            The field at the specified index and record position.
+            A <see langword="null"/> is returned if the field cannot be found for the record.
+            </value>
+            <exception cref="T:ArgumentOutOfRangeException">
+            	<paramref name="field"/> must be included in [0, <see cref="M:FieldCount"/>[.
+            </exception>
+            <exception cref="T:ArgumentOutOfRangeException">
+            	Record index must be > 0.
+            </exception>
+            <exception cref="T:InvalidOperationException">
+            	Cannot move to a previous record in forward-only mode.
+            </exception>
+            <exception cref="T:EndOfStreamException">
+            	Cannot read record at <paramref name="record"/>.
+            </exception>
+            <exception cref="T:MalformedCsvException">
+            	The CSV appears to be corrupt at the current position.
+            </exception>
+            <exception cref="T:System.ComponentModel.ObjectDisposedException">
+            The instance has been disposed of.
+            </exception>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.Item(System.String)">
+            <summary>
+            Gets the field with the specified name. <see cref="M:hasHeaders"/> must be <see langword="true"/>.
+            </summary>
+            <value>
+            The field with the specified name.
+            </value>
+            <exception cref="T:ArgumentNullException">
+            	<paramref name="field"/> is <see langword="null"/> or an empty string.
+            </exception>
+            <exception cref="T:InvalidOperationException">
+            The CSV does not have headers (<see cref="M:HasHeaders"/> property is <see langword="false"/>).
+            </exception>
+            <exception cref="T:ArgumentException">
+            	<paramref name="field"/> not found.
+            </exception>
+            <exception cref="T:MalformedCsvException">
+            	The CSV appears to be corrupt at the current position.
+            </exception>
+            <exception cref="T:System.ComponentModel.ObjectDisposedException">
+            The instance has been disposed of.
+            </exception>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.Item(System.Int32)">
+            <summary>
+            Gets the field at the specified index.
+            </summary>
+            <value>The field at the specified index.</value>
+            <exception cref="T:ArgumentOutOfRangeException">
+            	<paramref name="field"/> must be included in [0, <see cref="M:FieldCount"/>[.
+            </exception>
+            <exception cref="T:InvalidOperationException">
+            	No record read yet. Call ReadLine() first.
+            </exception>
+            <exception cref="T:MalformedCsvException">
+            	The CSV appears to be corrupt at the current position.
+            </exception>
             <exception cref="T:System.ComponentModel.ObjectDisposedException">
             The instance has been disposed of.
             </exception>
@@ -310,6 +829,13 @@
             The instance has been disposed of.
             </exception>
         </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.CsvReader.HasHeader(System.String)">
+            <summary>
+            Checks if a header exists in the current fieldHedaerIndexes
+            </summary>
+            <param name="header">The header to look for.</param>
+            <returns>A flag indicating if the header exists</returns>
+        </member>
         <member name="M:LumenWorks.Framework.IO.Csv.CsvReader.CopyCurrentRecordTo(System.String[])">
             <summary>
             Copies the field array of the current record to a one-dimensional array, starting at the beginning of the target array.
@@ -319,7 +845,7 @@
             	<paramref name="array"/> is <see langword="null"/>.
             </exception>
             <exception cref="T:System.ArgumentException">
-            	The number of fields in the record is greater than the available space from <paramref name="index"/> to the end of <paramref name="array"/>.
+            	The number of fields in the record is greater than the available space from 0 to the end of <paramref name="array"/>.
             </exception>
         </member>
         <member name="M:LumenWorks.Framework.IO.Csv.CsvReader.CopyCurrentRecordTo(System.String[],System.Int32)">
@@ -484,7 +1010,7 @@
             The instance has been disposed of.
             </exception>
         </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.CsvReader.SkipToNextLine(System.Int32@)">
+        <member name="M:LumenWorks.Framework.IO.Csv.CsvReader.SkipToNewLine(System.Int32@)">
             <summary>
             Skips ahead to the next NewLine character.
             If the end of the buffer is reached, its content be discarded and filled again from the reader.
@@ -581,6 +1107,19 @@
             Contains the locking object for multi-threading purpose.
             </summary>
         </member>
+        <member name="E:LumenWorks.Framework.IO.Csv.CsvReader.Disposed">
+            <summary>
+            Occurs when the instance is disposed of.
+            </summary>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.IsDisposed">
+            <summary>
+            Gets a value indicating whether the instance has been disposed of.
+            </summary>
+            <value>
+            	<see langword="true"/> if the instance has been disposed of; otherwise, <see langword="false"/>.
+            </value>
+        </member>
         <member name="M:LumenWorks.Framework.IO.Csv.CsvReader.OnDisposed(System.EventArgs)">
             <summary>
             Raises the <see cref="M:Disposed"/> event.
@@ -619,228 +1158,25 @@
             Releases unmanaged resources and performs other cleanup operations before the instance is reclaimed by garbage collection.
             </summary>
         </member>
-        <member name="E:LumenWorks.Framework.IO.Csv.CsvReader.ParseError">
+        <member name="T:LumenWorks.Framework.IO.Csv.CsvReader.DataReaderValidations">
             <summary>
-            Occurs when there is an error while parsing the CSV stream.
+            Defines the data reader validations.
             </summary>
         </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.Comment">
+        <member name="F:LumenWorks.Framework.IO.Csv.CsvReader.DataReaderValidations.None">
             <summary>
-            Gets the comment character indicating that a line is commented out.
-            </summary>
-            <value>The comment character indicating that a line is commented out.</value>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.Escape">
-            <summary>
-            Gets the escape character letting insert quotation characters inside a quoted field.
-            </summary>
-            <value>The escape character letting insert quotation characters inside a quoted field.</value>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.Delimiter">
-            <summary>
-            Gets the delimiter character separating each field.
-            </summary>
-            <value>The delimiter character separating each field.</value>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.Quote">
-            <summary>
-            Gets the quotation character wrapping every field.
-            </summary>
-            <value>The quotation character wrapping every field.</value>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.HasHeaders">
-            <summary>
-            Indicates if field names are located on the first non commented line.
-            </summary>
-            <value><see langword="true"/> if field names are located on the first non commented line, otherwise, <see langword="false"/>.</value>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.TrimmingOption">
-            <summary>
-            Indicates if spaces at the start and end of a field are trimmed.
-            </summary>
-            <value><see langword="true"/> if spaces at the start and end of a field are trimmed, otherwise, <see langword="false"/>.</value>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.BufferSize">
-            <summary>
-            Gets the buffer size.
+            No validation.
             </summary>
         </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.DefaultParseErrorAction">
+        <member name="F:LumenWorks.Framework.IO.Csv.CsvReader.DataReaderValidations.IsInitialized">
             <summary>
-            Gets or sets the default action to take when a parsing error has occured.
-            </summary>
-            <value>The default action to take when a parsing error has occured.</value>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.MissingFieldAction">
-            <summary>
-            Gets or sets the action to take when a field is missing.
-            </summary>
-            <value>The action to take when a field is missing.</value>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.SupportsMultiline">
-            <summary>
-            Gets or sets a value indicating if the reader supports multiline fields.
-            </summary>
-            <value>A value indicating if the reader supports multiline field.</value>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.SkipEmptyLines">
-            <summary>
-            Gets or sets a value indicating if the reader will skip empty lines.
-            </summary>
-            <value>A value indicating if the reader will skip empty lines.</value>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.DefaultHeaderName">
-            <summary>
-            Gets or sets the default header name when it is an empty string or only whitespaces.
-            The header index will be appended to the specified name.
-            </summary>
-            <value>The default header name when it is an empty string or only whitespaces.</value>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.FieldCount">
-            <summary>
-            Gets the maximum number of fields to retrieve for each record.
-            </summary>
-            <value>The maximum number of fields to retrieve for each record.</value>
-            <exception cref="T:System.ComponentModel.ObjectDisposedException">
-            The instance has been disposed of.
-            </exception>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.EndOfStream">
-            <summary>
-            Gets a value that indicates whether the current stream position is at the end of the stream.
-            </summary>
-            <value><see langword="true"/> if the current stream position is at the end of the stream; otherwise <see langword="false"/>.</value>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.CurrentRecordIndex">
-            <summary>
-            Gets the current record index in the CSV file.
-            </summary>
-            <value>The current record index in the CSV file.</value>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.MissingFieldFlag">
-            <summary>
-            Indicates if one or more field are missing for the current record.
-            Resets after each successful record read.
+            Validate that the data reader is initialized.
             </summary>
         </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.ParseErrorFlag">
+        <member name="F:LumenWorks.Framework.IO.Csv.CsvReader.DataReaderValidations.IsNotClosed">
             <summary>
-            Indicates if a parse error occured for the current record.
-            Resets after each successful record read.
+            Validate that the data reader is not closed.
             </summary>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.Item(System.Int32,System.String)">
-            <summary>
-            Gets the field with the specified name and record position. <see cref="M:hasHeaders"/> must be <see langword="true"/>.
-            </summary>
-            <value>
-            The field with the specified name and record position.
-            </value>
-            <exception cref="T:ArgumentNullException">
-            	<paramref name="field"/> is <see langword="null"/> or an empty string.
-            </exception>
-            <exception cref="T:InvalidOperationException">
-            The CSV does not have headers (<see cref="M:HasHeaders"/> property is <see langword="false"/>).
-            </exception>
-            <exception cref="T:ArgumentException">
-            	<paramref name="field"/> not found.
-            </exception>
-            <exception cref="T:ArgumentOutOfRangeException">
-            	Record index must be > 0.
-            </exception>
-            <exception cref="T:InvalidOperationException">
-            	Cannot move to a previous record in forward-only mode.
-            </exception>
-            <exception cref="T:EndOfStreamException">
-            	Cannot read record at <paramref name="record"/>.
-            </exception>
-            <exception cref="T:MalformedCsvException">
-            	The CSV appears to be corrupt at the current position.
-            </exception>
-            <exception cref="T:System.ComponentModel.ObjectDisposedException">
-            The instance has been disposed of.
-            </exception>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.Item(System.Int32,System.Int32)">
-            <summary>
-            Gets the field at the specified index and record position.
-            </summary>
-            <value>
-            The field at the specified index and record position.
-            A <see langword="null"/> is returned if the field cannot be found for the record.
-            </value>
-            <exception cref="T:ArgumentOutOfRangeException">
-            	<paramref name="field"/> must be included in [0, <see cref="M:FieldCount"/>[.
-            </exception>
-            <exception cref="T:ArgumentOutOfRangeException">
-            	Record index must be > 0.
-            </exception>
-            <exception cref="T:InvalidOperationException">
-            	Cannot move to a previous record in forward-only mode.
-            </exception>
-            <exception cref="T:EndOfStreamException">
-            	Cannot read record at <paramref name="record"/>.
-            </exception>
-            <exception cref="T:MalformedCsvException">
-            	The CSV appears to be corrupt at the current position.
-            </exception>
-            <exception cref="T:System.ComponentModel.ObjectDisposedException">
-            The instance has been disposed of.
-            </exception>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.Item(System.String)">
-            <summary>
-            Gets the field with the specified name. <see cref="M:hasHeaders"/> must be <see langword="true"/>.
-            </summary>
-            <value>
-            The field with the specified name.
-            </value>
-            <exception cref="T:ArgumentNullException">
-            	<paramref name="field"/> is <see langword="null"/> or an empty string.
-            </exception>
-            <exception cref="T:InvalidOperationException">
-            The CSV does not have headers (<see cref="M:HasHeaders"/> property is <see langword="false"/>).
-            </exception>
-            <exception cref="T:ArgumentException">
-            	<paramref name="field"/> not found.
-            </exception>
-            <exception cref="T:MalformedCsvException">
-            	The CSV appears to be corrupt at the current position.
-            </exception>
-            <exception cref="T:System.ComponentModel.ObjectDisposedException">
-            The instance has been disposed of.
-            </exception>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.Item(System.Int32)">
-            <summary>
-            Gets the field at the specified index.
-            </summary>
-            <value>The field at the specified index.</value>
-            <exception cref="T:ArgumentOutOfRangeException">
-            	<paramref name="field"/> must be included in [0, <see cref="M:FieldCount"/>[.
-            </exception>
-            <exception cref="T:InvalidOperationException">
-            	No record read yet. Call ReadLine() first.
-            </exception>
-            <exception cref="T:MalformedCsvException">
-            	The CSV appears to be corrupt at the current position.
-            </exception>
-            <exception cref="T:System.ComponentModel.ObjectDisposedException">
-            The instance has been disposed of.
-            </exception>
-        </member>
-        <member name="E:LumenWorks.Framework.IO.Csv.CsvReader.Disposed">
-            <summary>
-            Occurs when the instance is disposed of.
-            </summary>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.IsDisposed">
-            <summary>
-            Gets a value indicating whether the instance has been disposed of.
-            </summary>
-            <value>
-            	<see langword="true"/> if the instance has been disposed of; otherwise, <see langword="false"/>.
-            </value>
         </member>
         <member name="T:LumenWorks.Framework.IO.Csv.CsvReader.RecordEnumerator">
             <summary>
@@ -871,6 +1207,11 @@
             	<paramref name="reader"/> is a <see langword="null"/>.
             </exception>
         </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.RecordEnumerator.Current">
+            <summary>
+            Gets the current record.
+            </summary>
+        </member>
         <member name="M:LumenWorks.Framework.IO.Csv.CsvReader.RecordEnumerator.MoveNext">
             <summary>
             Advances the enumerator to the next record of the CSV.
@@ -882,48 +1223,49 @@
             Sets the enumerator to its initial position, which is before the first record in the CSV.
             </summary>
         </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.CsvReader.RecordEnumerator.Dispose">
-            <summary>
-            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-            </summary>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.RecordEnumerator.Current">
-            <summary>
-            Gets the current record.
-            </summary>
-        </member>
         <member name="P:LumenWorks.Framework.IO.Csv.CsvReader.RecordEnumerator.System#Collections#IEnumerator#Current">
             <summary>
             Gets the current record.
             </summary>
         </member>
-        <member name="T:LumenWorks.Framework.IO.Csv.CsvReader.DataReaderValidations">
+        <member name="M:LumenWorks.Framework.IO.Csv.CsvReader.RecordEnumerator.Dispose">
             <summary>
-            Defines the data reader validations.
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
             </summary>
         </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.CsvReader.DataReaderValidations.None">
+        <member name="T:LumenWorks.Framework.IO.Csv.ParseErrorEventArgs">
             <summary>
-            No validation.
+            Provides data for the <see cref="M:CsvReader.ParseError"/> event.
             </summary>
         </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.CsvReader.DataReaderValidations.IsInitialized">
+        <member name="F:LumenWorks.Framework.IO.Csv.ParseErrorEventArgs._error">
             <summary>
-            Validate that the data reader is initialized.
+            Contains the error that occured.
             </summary>
         </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.CsvReader.DataReaderValidations.IsNotClosed">
+        <member name="F:LumenWorks.Framework.IO.Csv.ParseErrorEventArgs._action">
             <summary>
-            Validate that the data reader is not closed.
+            Contains the action to take.
             </summary>
         </member>
-        <member name="T:LumenWorks.Framework.IO.Csv.MissingFieldCsvException">
+        <member name="M:LumenWorks.Framework.IO.Csv.ParseErrorEventArgs.#ctor(LumenWorks.Framework.IO.Csv.MalformedCsvException,LumenWorks.Framework.IO.Csv.ParseErrorAction)">
             <summary>
-            Represents the exception that is thrown when a there is a missing field in a record of the CSV file.
+            Initializes a new instance of the ParseErrorEventArgs class.
             </summary>
-            <remarks>
-            MissingFieldException would have been a better name, but there is already a <see cref="T:System.MissingFieldException"/>.
-            </remarks>
+            <param name="error">The error that occured.</param>
+            <param name="defaultAction">The default action to take.</param>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.ParseErrorEventArgs.Error">
+            <summary>
+            Gets the error that occured.
+            </summary>
+            <value>The error that occured.</value>
+        </member>
+        <member name="P:LumenWorks.Framework.IO.Csv.ParseErrorEventArgs.Action">
+            <summary>
+            Gets or sets the action to take.
+            </summary>
+            <value>The action to take.</value>
         </member>
         <member name="T:LumenWorks.Framework.IO.Csv.MalformedCsvException">
             <summary>
@@ -999,13 +1341,6 @@
             <param name="info">The <see cref="T:SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
             <param name="context">The <see cref="T:StreamingContext"/> that contains contextual information about the source or destination.</param>
         </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.MalformedCsvException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            When overridden in a derived class, sets the <see cref="T:SerializationInfo"/> with information about the exception.
-            </summary>
-            <param name="info">The <see cref="T:SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
-            <param name="context">The <see cref="T:StreamingContext"/> that contains contextual information about the source or destination.</param>
-        </member>
         <member name="P:LumenWorks.Framework.IO.Csv.MalformedCsvException.RawData">
             <summary>
             Gets the raw data when the error occured.
@@ -1035,6 +1370,21 @@
             Gets a message that describes the current exception.
             </summary>
             <value>A message that describes the current exception.</value>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.MalformedCsvException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            When overridden in a derived class, sets the <see cref="T:SerializationInfo"/> with information about the exception.
+            </summary>
+            <param name="info">The <see cref="T:SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:StreamingContext"/> that contains contextual information about the source or destination.</param>
+        </member>
+        <member name="T:LumenWorks.Framework.IO.Csv.MissingFieldCsvException">
+            <summary>
+            Represents the exception that is thrown when a there is a missing field in a record of the CSV file.
+            </summary>
+            <remarks>
+            MissingFieldException would have been a better name, but there is already a <see cref="T:System.MissingFieldException"/>.
+            </remarks>
         </member>
         <member name="M:LumenWorks.Framework.IO.Csv.MissingFieldCsvException.#ctor">
             <summary>
@@ -1080,289 +1430,45 @@
             <param name="info">The <see cref="T:SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
             <param name="context">The <see cref="T:StreamingContext"/> that contains contextual information about the source or destination.</param>
         </member>
-        <member name="T:LumenWorks.Framework.IO.Csv.CachedCsvReader">
+        <member name="T:LumenWorks.Framework.IO.Csv.MissingFieldAction">
             <summary>
-            Represents a reader that provides fast, cached, dynamic access to CSV data.
-            </summary>
-            <remarks>The number of records is limited to <see cref="F:System.Int32.MaxValue"/> - 1.</remarks>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader._records">
-            <summary>
-            Contains the cached records.
+            Specifies the action to take when a field is missing.
             </summary>
         </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader._currentRecordIndex">
+        <member name="F:LumenWorks.Framework.IO.Csv.MissingFieldAction.ParseError">
             <summary>
-            Contains the current record index (inside the cached records array).
+            Treat as a parsing error.
             </summary>
         </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader._readingStream">
+        <member name="F:LumenWorks.Framework.IO.Csv.MissingFieldAction.ReplaceByEmpty">
             <summary>
-            Indicates if a new record is being read from the CSV stream.
+            Replaces by an empty value.
             </summary>
         </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader._bindingList">
+        <member name="F:LumenWorks.Framework.IO.Csv.MissingFieldAction.ReplaceByNull">
             <summary>
-            Contains the binding list linked to this reader.
+            Replaces by a null value (<see langword="null"/>).
             </summary>
         </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.#ctor(System.IO.TextReader,System.Boolean)">
+        <member name="T:LumenWorks.Framework.IO.Csv.ParseErrorAction">
             <summary>
-            Initializes a new instance of the CsvReader class.
-            </summary>
-            <param name="reader">A <see cref="T:TextReader"/> pointing to the CSV file.</param>
-            <param name="hasHeaders"><see langword="true"/> if field names are located on the first non commented line, otherwise, <see langword="false"/>.</param>
-            <exception cref="T:ArgumentNullException">
-            	<paramref name="reader"/> is a <see langword="null"/>.
-            </exception>
-            <exception cref="T:ArgumentException">
-            	Cannot read from <paramref name="reader"/>.
-            </exception>
-        </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.#ctor(System.IO.TextReader,System.Boolean,System.Int32)">
-            <summary>
-            Initializes a new instance of the CsvReader class.
-            </summary>
-            <param name="reader">A <see cref="T:TextReader"/> pointing to the CSV file.</param>
-            <param name="hasHeaders"><see langword="true"/> if field names are located on the first non commented line, otherwise, <see langword="false"/>.</param>
-            <param name="bufferSize">The buffer size in bytes.</param>
-            <exception cref="T:ArgumentNullException">
-            	<paramref name="reader"/> is a <see langword="null"/>.
-            </exception>
-            <exception cref="T:ArgumentException">
-            	Cannot read from <paramref name="reader"/>.
-            </exception>
-        </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.#ctor(System.IO.TextReader,System.Boolean,System.Char)">
-            <summary>
-            Initializes a new instance of the CsvReader class.
-            </summary>
-            <param name="reader">A <see cref="T:TextReader"/> pointing to the CSV file.</param>
-            <param name="hasHeaders"><see langword="true"/> if field names are located on the first non commented line, otherwise, <see langword="false"/>.</param>
-            <param name="delimiter">The delimiter character separating each field (default is ',').</param>
-            <exception cref="T:ArgumentNullException">
-            	<paramref name="reader"/> is a <see langword="null"/>.
-            </exception>
-            <exception cref="T:ArgumentException">
-            	Cannot read from <paramref name="reader"/>.
-            </exception>
-        </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.#ctor(System.IO.TextReader,System.Boolean,System.Char,System.Int32)">
-            <summary>
-            Initializes a new instance of the CsvReader class.
-            </summary>
-            <param name="reader">A <see cref="T:TextReader"/> pointing to the CSV file.</param>
-            <param name="hasHeaders"><see langword="true"/> if field names are located on the first non commented line, otherwise, <see langword="false"/>.</param>
-            <param name="delimiter">The delimiter character separating each field (default is ',').</param>
-            <param name="bufferSize">The buffer size in bytes.</param>
-            <exception cref="T:ArgumentNullException">
-            	<paramref name="reader"/> is a <see langword="null"/>.
-            </exception>
-            <exception cref="T:ArgumentException">
-            	Cannot read from <paramref name="reader"/>.
-            </exception>
-        </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.#ctor(System.IO.TextReader,System.Boolean,System.Char,System.Char,System.Char,System.Char,LumenWorks.Framework.IO.Csv.ValueTrimmingOptions)">
-            <summary>
-            Initializes a new instance of the CsvReader class.
-            </summary>
-            <param name="reader">A <see cref="T:TextReader"/> pointing to the CSV file.</param>
-            <param name="hasHeaders"><see langword="true"/> if field names are located on the first non commented line, otherwise, <see langword="false"/>.</param>
-            <param name="delimiter">The delimiter character separating each field (default is ',').</param>
-            <param name="quote">The quotation character wrapping every field (default is ''').</param>
-            <param name="escape">
-            The escape character letting insert quotation characters inside a quoted field (default is '\').
-            If no escape character, set to '\0' to gain some performance.
-            </param>
-            <param name="comment">The comment character indicating that a line is commented out (default is '#').</param>
-            <param name="trimmingOptions">Determines how values should be trimmed.</param>
-            <exception cref="T:ArgumentNullException">
-            	<paramref name="reader"/> is a <see langword="null"/>.
-            </exception>
-            <exception cref="T:ArgumentException">
-            	Cannot read from <paramref name="reader"/>.
-            </exception>
-        </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.#ctor(System.IO.TextReader,System.Boolean,System.Char,System.Char,System.Char,System.Char,LumenWorks.Framework.IO.Csv.ValueTrimmingOptions,System.Int32)">
-            <summary>
-            Initializes a new instance of the CsvReader class.
-            </summary>
-            <param name="reader">A <see cref="T:TextReader"/> pointing to the CSV file.</param>
-            <param name="hasHeaders"><see langword="true"/> if field names are located on the first non commented line, otherwise, <see langword="false"/>.</param>
-            <param name="delimiter">The delimiter character separating each field (default is ',').</param>
-            <param name="quote">The quotation character wrapping every field (default is ''').</param>
-            <param name="escape">
-            The escape character letting insert quotation characters inside a quoted field (default is '\').
-            If no escape character, set to '\0' to gain some performance.
-            </param>
-            <param name="comment">The comment character indicating that a line is commented out (default is '#').</param>
-            <param name="trimSpaces"><see langword="true"/> if spaces at the start and end of a field are trimmed, otherwise, <see langword="false"/>. Default is <see langword="true"/>.</param>
-            <param name="bufferSize">The buffer size in bytes.</param>
-            <exception cref="T:ArgumentNullException">
-            	<paramref name="reader"/> is a <see langword="null"/>.
-            </exception>
-            <exception cref="T:System.ArgumentOutOfRangeException">
-            	<paramref name="bufferSize"/> must be 1 or more.
-            </exception>
-        </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.ReadToEnd">
-            <summary>
-            Reads the CSV stream from the current position to the end of the stream.
-            </summary>
-            <exception cref="T:System.ComponentModel.ObjectDisposedException">
-            The instance has been disposed of.
-            </exception>
-        </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.ReadNextRecord(System.Boolean,System.Boolean)">
-            <summary>
-            Reads the next record.
-            </summary>
-            <param name="onlyReadHeaders">
-            Indicates if the reader will proceed to the next record after having read headers.
-            <see langword="true"/> if it stops after having read headers; otherwise, <see langword="false"/>.
-            </param>
-            <param name="skipToNextLine">
-            Indicates if the reader will skip directly to the next line without parsing the current one. 
-            To be used when an error occurs.
-            </param>
-            <returns><see langword="true"/> if a record has been successfully reads; otherwise, <see langword="false"/>.</returns>
-            <exception cref="T:System.ComponentModel.ObjectDisposedException">
-            The instance has been disposed of.
-            </exception>
-        </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.MoveToStart">
-            <summary>
-            Moves before the first record.
+            Specifies the action to take when a parsing error has occured.
             </summary>
         </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.MoveToLastCachedRecord">
+        <member name="F:LumenWorks.Framework.IO.Csv.ParseErrorAction.RaiseEvent">
             <summary>
-            Moves to the last record read so far.
+            Raises the <see cref="M:CsvReader.ParseError"/> event.
             </summary>
         </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.MoveTo(System.Int64)">
+        <member name="F:LumenWorks.Framework.IO.Csv.ParseErrorAction.AdvanceToNextLine">
             <summary>
-            Moves to the specified record index.
-            </summary>
-            <param name="record">The record index.</param>
-            <returns><c>true</c> if the operation was successful; otherwise, <c>false</c>.</returns>
-            <exception cref="T:System.ComponentModel.ObjectDisposedException">
-            	The instance has been disposed of.
-            </exception>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CachedCsvReader.CurrentRecordIndex">
-            <summary>
-            Gets the current record index in the CSV file.
-            </summary>
-            <value>The current record index in the CSV file.</value>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CachedCsvReader.EndOfStream">
-            <summary>
-            Gets a value that indicates whether the current stream position is at the end of the stream.
-            </summary>
-            <value><see langword="true"/> if the current stream position is at the end of the stream; otherwise <see langword="false"/>.</value>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CachedCsvReader.Item(System.Int32)">
-            <summary>
-            Gets the field at the specified index.
-            </summary>
-            <value>The field at the specified index.</value>
-            <exception cref="T:ArgumentOutOfRangeException">
-            	<paramref name="field"/> must be included in [0, <see cref="M:FieldCount"/>[.
-            </exception>
-            <exception cref="T:InvalidOperationException">
-            	No record read yet. Call ReadLine() first.
-            </exception>
-            <exception cref="T:LumenWorks.Framework.IO.Csv.MissingFieldCsvException">
-            	The CSV data appears to be missing a field.
-            </exception>
-            <exception cref="T:MalformedCsvException">
-            	The CSV appears to be corrupt at the current position.
-            </exception>
-            <exception cref="T:System.ComponentModel.ObjectDisposedException">
-            	The instance has been disposed of.
-            </exception>
-        </member>
-        <member name="T:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvRecordComparer">
-            <summary>
-            Represents a CSV record comparer.
+            Tries to advance to next line.
             </summary>
         </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvRecordComparer._field">
+        <member name="F:LumenWorks.Framework.IO.Csv.ParseErrorAction.ThrowException">
             <summary>
-            Contains the field index of the values to compare.
+            Throws an exception.
             </summary>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvRecordComparer._direction">
-            <summary>
-            Contains the sort direction.
-            </summary>
-        </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvRecordComparer.#ctor(System.Int32,System.ComponentModel.ListSortDirection)">
-            <summary>
-            Initializes a new instance of the CsvRecordComparer class.
-            </summary>
-            <param name="field">The field index of the values to compare.</param>
-            <param name="direction">The sort direction.</param>
-        </member>
-        <member name="T:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvBindingList">
-            <summary>
-            Represents a binding list wrapper for a CSV reader.
-            </summary>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvBindingList._csv">
-            <summary>
-            Contains the linked CSV reader.
-            </summary>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvBindingList._count">
-            <summary>
-            Contains the cached record count.
-            </summary>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvBindingList._properties">
-            <summary>
-            Contains the cached property descriptors.
-            </summary>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvBindingList._sort">
-            <summary>
-            Contains the current sort property.
-            </summary>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvBindingList._direction">
-            <summary>
-            Contains the current sort direction.
-            </summary>
-        </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvBindingList.#ctor(LumenWorks.Framework.IO.Csv.CachedCsvReader)">
-            <summary>
-            Initializes a new instance of the CsvBindingList class.
-            </summary>
-            <param name="csv"></param>
-        </member>
-        <member name="T:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvPropertyDescriptor">
-            <summary>
-            Represents a CSV field property descriptor.
-            </summary>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvPropertyDescriptor._index">
-            <summary>
-            Contains the field index.
-            </summary>
-        </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvPropertyDescriptor.#ctor(System.String,System.Int32)">
-            <summary>
-            Initializes a new instance of the CsvPropertyDescriptor class.
-            </summary>
-            <param name="fieldName">The field name.</param>
-            <param name="index">The field index.</param>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.CachedCsvReader.CsvPropertyDescriptor.Index">
-            <summary>
-            Gets the field index.
-            </summary>
-            <value>The field index.</value>
         </member>
         <member name="T:LumenWorks.Framework.IO.Csv.Resources.ExceptionMessage">
             <summary>
@@ -1460,78 +1566,69 @@
               Looks up a localized string similar to Record index must be 0 or more..
             </summary>
         </member>
-        <member name="T:LumenWorks.Framework.IO.Csv.ParseErrorEventArgs">
+        <member name="T:LumenWorks.Framework.IO.Csv.Column">
             <summary>
-            Provides data for the <see cref="M:CsvReader.ParseError"/> event.
+            Metadata about a CSV column.
             </summary>
         </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.ParseErrorEventArgs._error">
+        <member name="M:LumenWorks.Framework.IO.Csv.Column.#ctor">
             <summary>
-            Contains the error that occured.
+            Creates a new instance of the <see cref="T:LumenWorks.Framework.IO.Csv.Column" /> class.
             </summary>
         </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.ParseErrorEventArgs._action">
+        <member name="P:LumenWorks.Framework.IO.Csv.Column.Name">
             <summary>
-            Contains the action to take.
+            Get or set the name.
             </summary>
         </member>
-        <member name="M:LumenWorks.Framework.IO.Csv.ParseErrorEventArgs.#ctor(LumenWorks.Framework.IO.Csv.MalformedCsvException,LumenWorks.Framework.IO.Csv.ParseErrorAction)">
+        <member name="P:LumenWorks.Framework.IO.Csv.Column.Type">
             <summary>
-            Initializes a new instance of the ParseErrorEventArgs class.
-            </summary>
-            <param name="error">The error that occured.</param>
-            <param name="defaultAction">The default action to take.</param>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.ParseErrorEventArgs.Error">
-            <summary>
-            Gets the error that occured.
-            </summary>
-            <value>The error that occured.</value>
-        </member>
-        <member name="P:LumenWorks.Framework.IO.Csv.ParseErrorEventArgs.Action">
-            <summary>
-            Gets or sets the action to take.
-            </summary>
-            <value>The action to take.</value>
-        </member>
-        <member name="T:LumenWorks.Framework.IO.Csv.ParseErrorAction">
-            <summary>
-            Specifies the action to take when a parsing error has occured.
+            Get or set the type.
             </summary>
         </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.ParseErrorAction.RaiseEvent">
+        <member name="P:LumenWorks.Framework.IO.Csv.Column.DefaultValue">
             <summary>
-            Raises the <see cref="M:CsvReader.ParseError"/> event.
+            Get or set the default value of the column.
             </summary>
         </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.ParseErrorAction.AdvanceToNextLine">
+        <member name="M:LumenWorks.Framework.IO.Csv.Column.Convert(System.String)">
             <summary>
-            Tries to advance to next line.
+            Converts the value into the column type.
+            </summary>
+            <param name="value">Value to use</param>
+            <returns>Converted value.</returns>
+        </member>
+        <member name="M:LumenWorks.Framework.IO.Csv.Column.TryConvert(System.String,System.Object@)">
+            <summary>
+            Converts the value into the column type.
+            </summary>
+            <param name="value">Value to use</param>
+            <param name="result">Object to hold the converted value.</param>
+            <returns>true if the conversion was successful, otherwise false.</returns>
+        </member>
+        <member name="T:LumenWorks.Framework.IO.Csv.ValueTrimmingOptions">
+            <summary>
+            Determines which values should be trimmed.
             </summary>
         </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.ParseErrorAction.ThrowException">
+        <member name="F:LumenWorks.Framework.IO.Csv.ValueTrimmingOptions.None">
             <summary>
-            Throws an exception.
+            Don't do any trimming
             </summary>
         </member>
-        <member name="T:LumenWorks.Framework.IO.Csv.MissingFieldAction">
+        <member name="F:LumenWorks.Framework.IO.Csv.ValueTrimmingOptions.UnquotedOnly">
             <summary>
-            Specifies the action to take when a field is missing.
+            Only trim unquoted values
             </summary>
         </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.MissingFieldAction.ParseError">
+        <member name="F:LumenWorks.Framework.IO.Csv.ValueTrimmingOptions.QuotedOnly">
             <summary>
-            Treat as a parsing error.
+            Only trim quoted values
             </summary>
         </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.MissingFieldAction.ReplaceByEmpty">
+        <member name="F:LumenWorks.Framework.IO.Csv.ValueTrimmingOptions.All">
             <summary>
-            Replaces by an empty value.
-            </summary>
-        </member>
-        <member name="F:LumenWorks.Framework.IO.Csv.MissingFieldAction.ReplaceByNull">
-            <summary>
-            Replaces by a null value (<see langword="null"/>).
+            trim all values
             </summary>
         </member>
     </members>

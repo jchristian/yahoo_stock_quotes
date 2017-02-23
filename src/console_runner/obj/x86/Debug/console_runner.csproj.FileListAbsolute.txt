@@ -35,3 +35,14 @@ C:\dev\oss\yahoo_stock_quotes\src\console_runner\obj\x86\Debug\console_runner.cs
 C:\dev\oss\yahoo_stock_quotes\src\console_runner\obj\x86\Debug\YSQ.console_runner.exe
 C:\dev\oss\yahoo_stock_quotes\src\console_runner\obj\x86\Debug\YSQ.console_runner.pdb
 C:\dev\oss\yahoo_stock_quotes\src\console_runner\bin\Debug\LumenWorks.Framework.IO.pdb
+C:\dev\oss\ysq\src\console_runner\bin\Debug\YSQ.console_runner.exe.config
+C:\dev\oss\ysq\src\console_runner\bin\Debug\YSQ.console_runner.exe
+C:\dev\oss\ysq\src\console_runner\bin\Debug\YSQ.console_runner.pdb
+C:\dev\oss\ysq\src\console_runner\bin\Debug\LumenWorks.Framework.IO.dll
+C:\dev\oss\ysq\src\console_runner\bin\Debug\YSQ.core.dll
+C:\dev\oss\ysq\src\console_runner\bin\Debug\YSQ.core.pdb
+C:\dev\oss\ysq\src\console_runner\bin\Debug\LumenWorks.Framework.IO.pdb
+C:\dev\oss\ysq\src\console_runner\bin\Debug\LumenWorks.Framework.IO.xml
+C:\dev\oss\ysq\src\console_runner\obj\x86\Debug\console_runner.csprojResolveAssemblyReference.cache
+C:\dev\oss\ysq\src\console_runner\obj\x86\Debug\YSQ.console_runner.exe
+C:\dev\oss\ysq\src\console_runner\obj\x86\Debug\YSQ.console_runner.pdb

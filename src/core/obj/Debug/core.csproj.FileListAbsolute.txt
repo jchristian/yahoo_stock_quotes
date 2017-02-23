@@ -19,3 +19,10 @@ C:\dev\oss\yahoo_stock_quotes\src\core\bin\Debug\LumenWorks.Framework.IO.xml
 C:\dev\oss\yahoo_stock_quotes\src\core\obj\Debug\YSQ.core.dll
 C:\dev\oss\yahoo_stock_quotes\src\core\obj\Debug\YSQ.core.pdb
 C:\dev\oss\yahoo_stock_quotes\src\core\bin\Debug\LumenWorks.Framework.IO.pdb
+C:\dev\oss\ysq\src\core\bin\Debug\YSQ.core.dll
+C:\dev\oss\ysq\src\core\bin\Debug\YSQ.core.pdb
+C:\dev\oss\ysq\src\core\bin\Debug\LumenWorks.Framework.IO.dll
+C:\dev\oss\ysq\src\core\bin\Debug\LumenWorks.Framework.IO.pdb
+C:\dev\oss\ysq\src\core\bin\Debug\LumenWorks.Framework.IO.xml
+C:\dev\oss\ysq\src\core\obj\Debug\YSQ.core.dll
+C:\dev\oss\ysq\src\core\obj\Debug\YSQ.core.pdb
